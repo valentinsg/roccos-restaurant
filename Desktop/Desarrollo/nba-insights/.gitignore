@@ -1,0 +1,29 @@
+# Ignora archivos de configuración de VSCode
+.vscode/
+.vscode.json
+
+# Ignora archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignora archivos de caché y binarios
+*.jar
+*.exe
+*.gz
+*.tar.gz
+
+# Ignora archivos de configuración de usuario
+*.json
+*.profile
+
+# Ignora el contenido de las carpetas específicas
+node_modules/
+build/
+dist/
+.cache/
+
+# Ignora archivos de configuración específicos de herramientas
+.idea/
+*.iml
+.gradle/
+.env
