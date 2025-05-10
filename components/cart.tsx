@@ -213,7 +213,7 @@ export default function Cart({ variant }: CartProps) {
                             <motion.button
                               whileHover={{ scale: 1.1, color: "#ef4444" }}
                               whileTap={{ scale: 0.9 }}
-                              onClick={() => removeFromCart(item.id)}
+                              onClick={() => item.id && removeFromCart(item.id)}
                               className="text-gray-400 hover:text-red-500 transition-colors"
                             >
                               <X className="h-5 w-5" />
@@ -224,7 +224,7 @@ export default function Cart({ variant }: CartProps) {
                               <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
+                                onClick={() => item.id && updateQuantity(item.id, Math.max(1, item.quantity - 1))}
                                 className={`${styles.quantityButton} rounded-full p-1`}
                               >
                                 <Minus className="h-4 w-4" />
@@ -233,7 +233,7 @@ export default function Cart({ variant }: CartProps) {
                               <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                onClick={() => item.id && updateQuantity(item.id, item.quantity + 1)}
                                 className={`${styles.quantityButton} rounded-full p-1`}
                               >
                                 <Plus className="h-4 w-4" />

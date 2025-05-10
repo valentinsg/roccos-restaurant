@@ -153,22 +153,6 @@ export function isPromoActive(promo: Promo): boolean {
 export function getActivePromos(sucursal: "roccos" | "roccos-2"): Promo[] {
   return promos
     .filter(promo => promo.sucursal === sucursal && isPromoActive(promo))
-    .map(promo => ({
-      ...promo,
-      // Crear un producto a partir de la promo
-      products: [
-        {
-          ...promo,
-          id: `product-${promo.id}`,
-          price: promo.price,
-          isPromo: true,
-          promoDetails: promo.description,
-          originalPrice: promo.originalPrice,
-          categoryId: "promos",
-        },
-        ...promo.products
-      ]
-    }))
 }
 
 // Convertir promociones a productos
