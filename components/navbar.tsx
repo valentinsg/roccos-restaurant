@@ -61,11 +61,11 @@ export default function Navbar({ variant, currentPath }: NavbarProps) {
       mobileMenu: "bg-[#111111] dark:bg-[#0A0A0A] text-[#FAF4E1] backdrop-blur-lg bg-opacity-95",
     },
     modern: {
-      container: `bg-white dark:bg-[#111111] text-[#111111] dark:text-[#FAF4E1] ${scrolled ? "shadow-[0_4px_30px_rgba(0,0,0,0.1)]" : ""}`,
+      container: `bg-[#0C2232] text-white  ${scrolled ? "shadow-[0_4px_30px_rgba(0,0,0,0.5)]" : ""}`,
       logo: "font-outfit font-bold",
-      link: "font-outfit hover:text-[#A82531] dark:hover:text-[#E6C163] transition-all duration-300",
-      activeLink: "font-outfit text-[#A82531] dark:text-[#E6C163] border-b-2 border-[#A82531] dark:border-[#E6C163]",
-      mobileMenu: "bg-white dark:bg-[#111111] text-[#111111] dark:text-[#FAF4E1] backdrop-blur-lg bg-opacity-95",
+      link: "font-outfit hover:text-[#E55925] dark:hover:text-[#E55925] transition-all duration-300",
+      activeLink: "font-outfit text-[#E55925] dark:text-[#E55925] border-b-2 border-[#E55925] dark:border-[#E55925]",
+      mobileMenu: "bg-white dark:bg-[#0C2232] text-[#0C2232] dark:text-white backdrop-blur-lg bg-opacity-95",
     },
   }
 

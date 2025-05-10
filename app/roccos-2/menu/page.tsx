@@ -20,13 +20,13 @@ export default function Roccos2Menu() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen bg-[#FAF4E1] pt-16 pb-24"
+      className="min-h-screen bg-white pt-16 pb-24"
     >
       <div className="mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-[#A82531] font-medium uppercase tracking-wider text-sm font-outfit">Nuestra carta</span>
-          <h1 className="font-outfit text-5xl font-extrabold text-[#A82531] mb-4">Nuestro Menú</h1>
-          <div className="w-24 h-1 bg-[#E6C163] mx-auto mt-6"></div>
+          <span className="text-[#E55925] font-medium uppercase tracking-wider text-sm font-outfit">Nuestra carta</span>
+          <h1 className="font-outfit text-5xl font-extrabold text-[#0C2232] mb-4">Nuestro Menú</h1>
+          <div className="w-24 h-1 bg-[#E55925] mx-auto mt-6"></div>
           <p className="text-gray-600 max-w-3xl mx-auto font-outfit mt-6 text-lg">
             Conoce nuestra variedad de platos y especialidades.
           </p>

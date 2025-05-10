@@ -38,11 +38,11 @@ export default function Roccos2Ubicacion() {
       <div className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <h1 className="font-sans text-4xl font-bold text-gray-800 mb-4">Ubicación</h1>
+            <h1 className="font-outfit text-4xl font-bold text-[#0C2232] mb-4">Ubicación</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Visítanos pronto en nuestra nueva ubicación en el centro de Dolores.
             </p>
-            <div className="inline-block bg-yellow-400 text-gray-800 px-4 py-1 rounded-full text-sm font-medium mt-4">
+            <div className="inline-block bg-[#E55925] text-white px-4 py-1 rounded-full text-sm font-medium mt-4">
               Próximamente abierto
             </div>
           </motion.div>
@@ -50,29 +50,29 @@ export default function Roccos2Ubicacion() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <motion.div variants={itemVariants} className="order-2 md:order-1">
               <div className="bg-white rounded-xl shadow-sm p-8 border border-gray-100">
-                <h2 className="font-sans text-2xl font-bold text-gray-800 mb-6">Información de Contacto</h2>
+                <h2 className="font-outfit text-2xl font-bold text-[#0C2232] mb-6">Información de Contacto</h2>
 
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <MapPin className="w-6 h-6 mr-3 text-yellow-500 flex-shrink-0 mt-1" />
+                    <MapPin className="w-6 h-6 mr-3 text-[#E55925] flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-sans text-lg font-medium mb-1">Dirección</h3>
+                      <h3 className="font-outfit text-lg font-medium mb-1">Dirección</h3>
                       <p className="text-gray-600">{restaurant.address}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <Phone className="w-6 h-6 mr-3 text-yellow-500 flex-shrink-0 mt-1" />
+                    <Phone className="w-6 h-6 mr-3 text-[#E55925] flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-sans text-lg font-medium mb-1">Contacto</h3>
+                      <h3 className="font-outfit text-lg font-medium mb-1">Contacto</h3>
                       <p className="text-gray-600">WhatsApp: {restaurant.whatsapp}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <Clock className="w-6 h-6 mr-3 text-yellow-500 flex-shrink-0 mt-1" />
+                    <Clock className="w-6 h-6 mr-3 text-[#E55925] flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-sans text-lg font-medium mb-1">Horarios (Próximamente)</h3>
+                      <h3 className="font-outfit text-lg font-medium mb-1">Horarios (Próximamente)</h3>
                       <div className="text-gray-600">
                         <table className="min-w-full">
                           <tbody>
@@ -82,7 +82,7 @@ export default function Roccos2Ubicacion() {
                             </tr>
                           </tbody>
                         </table>
-                        <p className="text-yellow-600 font-medium mt-2">
+                        <p className="text-[#E55925] font-medium mt-2">
                           {restaurant.isOpen ? "Actualmente abierto" : "En preparación para apertura"}
                         </p>
                       </div>
@@ -91,16 +91,16 @@ export default function Roccos2Ubicacion() {
 
                   <div className="flex items-start">
                     <div className="w-6 h-6 mr-3 flex-shrink-0 mt-1 flex justify-center">
-                      <Facebook className="w-5 h-5 text-yellow-500" />
+                      <Facebook className="w-5 h-5 text-[#E55925]" />
                     </div>
                     <div>
-                      <h3 className="font-sans text-lg font-medium mb-1">Redes Sociales</h3>
+                      <h3 className="font-outfit text-lg font-medium mb-1">Redes Sociales</h3>
                       <div className="flex space-x-4">
                         <a
                           href={restaurant.social.facebook}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                          className="flex items-center text-gray-600 hover:text-[#0C2232] transition-colors"
                         >
                           <Facebook className="w-5 h-5 mr-1" />
                           <span>Facebook</span>
@@ -109,7 +109,7 @@ export default function Roccos2Ubicacion() {
                           href={restaurant.social.instagram}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                          className="flex items-center text-gray-600 hover:text-[#0C2232] transition-colors"
                         >
                           <Instagram className="w-5 h-5 mr-1" />
                           <span>Instagram</span>
@@ -145,7 +145,7 @@ export default function Roccos2Ubicacion() {
             variants={itemVariants}
             className="mt-12 bg-white rounded-xl shadow-sm p-8 border border-gray-100"
           >
-            <h2 className="font-sans text-2xl font-bold text-gray-800 mb-6">Cómo llegar</h2>
+            <h2 className="font-outfit text-2xl font-bold text-[#0C2232] mb-6">Cómo llegar</h2>
             <p className="text-gray-600 mb-4">
               Nuestra nueva ubicación está estratégicamente situada en el centro de Dolores, en una zona de fácil acceso
               y con mucho movimiento.
@@ -157,7 +157,7 @@ export default function Roccos2Ubicacion() {
               href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(restaurant.address)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-yellow-600 hover:underline font-medium"
+              className="inline-flex items-center text-[#E55925] hover:underline font-medium"
             >
               <ExternalLink className="w-4 h-4 mr-1" />
               Obtener indicaciones en Google Maps

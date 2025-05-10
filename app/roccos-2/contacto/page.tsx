@@ -54,13 +54,13 @@ export default function Roccos2Contacto() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 py-16">
+    <div className="min-h-screen bg-white dark:bg-[#0C2232] py-16">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-roccos2-heading text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center"
+          className="font-roccos2-heading text-4xl font-bold text-[#0C2232] dark:text-white mb-6 text-center"
         >
           Contacto
         </motion.h1>
@@ -68,7 +68,7 @@ export default function Roccos2Contacto() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-roccos2-body text-gray-600 dark:text-gray-300 mb-12 text-center max-w-2xl mx-auto"
+          className="font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-12 text-center max-w-2xl mx-auto"
         >
           Estamos ansiosos por escucharte. Envíanos tus preguntas, sugerencias o comentarios sobre nuestra próxima
           apertura.
@@ -81,8 +81,8 @@ export default function Roccos2Contacto() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-8">
-              <h2 className="font-roccos2-heading text-2xl font-bold text-gray-800 dark:text-white mb-6">
+            <div className="bg-white dark:bg-[#0C2232] rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-8">
+              <h2 className="font-roccos2-heading text-2xl font-bold text-[#0C2232] dark:text-white mb-6">
                 Envíanos un mensaje
               </h2>
 
@@ -97,7 +97,7 @@ export default function Roccos2Contacto() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label htmlFor="name" className="block font-roccos2-body text-gray-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="name" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
                       Nombre completo *
                     </label>
                     <input
@@ -107,12 +107,12 @@ export default function Roccos2Contacto() {
                       value={formState.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 dark:focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block font-roccos2-body text-gray-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="email" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
                       Correo electrónico *
                     </label>
                     <input
@@ -122,12 +122,12 @@ export default function Roccos2Contacto() {
                       value={formState.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 dark:focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="phone" className="block font-roccos2-body text-gray-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="phone" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
                       Teléfono
                     </label>
                     <input
@@ -136,12 +136,12 @@ export default function Roccos2Contacto() {
                       name="phone"
                       value={formState.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 dark:focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block font-roccos2-body text-gray-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="subject" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
                       Asunto *
                     </label>
                     <select
@@ -150,7 +150,7 @@ export default function Roccos2Contacto() {
                       value={formState.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 dark:focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
                     >
                       <option value="">Selecciona una opción</option>
                       <option value="info">Información general</option>
@@ -162,7 +162,7 @@ export default function Roccos2Contacto() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block font-roccos2-body text-gray-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="message" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
                       Mensaje *
                     </label>
                     <textarea
@@ -172,7 +172,7 @@ export default function Roccos2Contacto() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 dark:focus:ring-yellow-500 dark:bg-gray-700 dark:text-white"
+                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
                     ></textarea>
                   </div>
 
@@ -183,11 +183,11 @@ export default function Roccos2Contacto() {
                       name="newsletter"
                       checked={formState.newsletter}
                       onChange={handleChange}
-                      className="h-4 w-4 text-yellow-400 focus:ring-yellow-400 border-gray-300 rounded"
+                      className="h-4 w-4 text-[#E55925] focus:ring-[#E55925] border-gray-300 rounded"
                     />
                     <label
                       htmlFor="newsletter"
-                      className="ml-2 block font-roccos2-body text-gray-700 dark:text-gray-300"
+                      className="ml-2 block font-roccos2-body text-[#0C2232] dark:text-gray-300"
                     >
                       Quiero recibir novedades sobre la apertura y promociones
                     </label>
@@ -202,7 +202,7 @@ export default function Roccos2Contacto() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-yellow-400 dark:bg-yellow-500 text-gray-800 dark:text-gray-900 font-roccos2-heading font-medium py-3 px-6 rounded-md hover:bg-yellow-500 dark:hover:bg-yellow-600 transition-colors flex items-center justify-center w-full disabled:opacity-70"
+                    className="bg-[#E55925] dark:bg-[#E55925] text-white dark:text-white font-roccos2-heading font-medium py-3 px-6 rounded-md hover:bg-[#c44d20] dark:hover:bg-[#c44d20] transition-colors flex items-center justify-center w-full disabled:opacity-70"
                   >
                     {isSubmitting ? (
                       "Enviando..."
@@ -223,12 +223,12 @@ export default function Roccos2Contacto() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <div className="bg-gray-800 dark:bg-gray-800 text-white rounded-lg shadow-md p-8 h-full">
+            <div className="bg-[#0C2232] dark:bg-[#0C2232] text-white rounded-lg shadow-md p-8 h-full">
               <h2 className="font-roccos2-heading text-2xl font-bold mb-8">Información de contacto</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <MapPin className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-yellow-400" />
+                  <MapPin className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#E55925]" />
                   <div>
                     <h3 className="font-roccos2-heading text-lg font-medium mb-2">Dirección</h3>
                     <p className="font-roccos2-body">{restaurant.address}</p>
@@ -236,7 +236,7 @@ export default function Roccos2Contacto() {
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.address)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block mt-2 text-yellow-400 hover:underline font-roccos2-body"
+                      className="inline-block mt-2 text-[#E55925] hover:underline font-roccos2-body"
                     >
                       Ver en Google Maps
                     </a>
@@ -244,7 +244,7 @@ export default function Roccos2Contacto() {
                 </div>
 
                 <div className="flex items-start">
-                  <Phone className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-yellow-400" />
+                  <Phone className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#E55925]" />
                   <div>
                     <h3 className="font-roccos2-heading text-lg font-medium mb-2">Contacto</h3>
                     <p className="font-roccos2-body">WhatsApp: {restaurant.whatsapp}</p>
@@ -252,7 +252,7 @@ export default function Roccos2Contacto() {
                 </div>
 
                 <div className="flex items-start">
-                  <Mail className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-yellow-400" />
+                  <Mail className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#E55925]" />
                   <div>
                     <h3 className="font-roccos2-heading text-lg font-medium mb-2">Correo electrónico</h3>
                     <p className="font-roccos2-body">info@roccos2.com.ar</p>
@@ -261,7 +261,7 @@ export default function Roccos2Contacto() {
                 </div>
 
                 <div className="flex items-start">
-                  <Clock className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-yellow-400" />
+                  <Clock className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#E55925]" />
                   <div>
                     <h3 className="font-roccos2-heading text-lg font-medium mb-2">Horarios (Próximamente)</h3>
                     <p className="font-roccos2-body">Lunes a Domingo:</p>
@@ -271,7 +271,7 @@ export default function Roccos2Contacto() {
 
                 <div className="flex items-start">
                   <div className="w-6 h-6 mr-4 flex-shrink-0 mt-1 flex justify-center">
-                    <Facebook className="w-5 h-5 text-yellow-400" />
+                    <Facebook className="w-5 h-5 text-[#E55925]" />
                   </div>
                   <div>
                     <h3 className="font-roccos2-heading text-lg font-medium mb-2">Redes sociales</h3>
@@ -280,7 +280,7 @@ export default function Roccos2Contacto() {
                         href={restaurant.social.facebook}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center text-white hover:text-yellow-400 transition-colors font-roccos2-body"
+                        className="flex items-center text-white hover:text-[#E55925] transition-colors font-roccos2-body"
                       >
                         <Facebook className="w-5 h-5 mr-2" />
                         <span>Facebook</span>
@@ -289,7 +289,7 @@ export default function Roccos2Contacto() {
                         href={restaurant.social.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center text-white hover:text-yellow-400 transition-colors font-roccos2-body"
+                        className="flex items-center text-white hover:text-[#E55925] transition-colors font-roccos2-body"
                       >
                         <Instagram className="w-5 h-5 mr-2" />
                         <span>Instagram</span>

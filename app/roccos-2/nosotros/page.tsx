@@ -41,13 +41,13 @@ export default function Roccos2Nosotros() {
       {/* Hero Section */}
       <section className="relative h-[50vh] overflow-hidden">
         <Image src="/placeholder.svg?height=800&width=1600" alt="Rocco's 2.0 Concepto" fill className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-900/30 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C2232]/70 to-[#0C2232]/30 z-10"></div>
         <div className="relative z-20 h-full flex flex-col items-center justify-center text-center text-white px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={loaded ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5 }}
-            className="bg-yellow-400 text-gray-800 px-6 py-2 rounded-full text-sm font-medium mb-6"
+            className="bg-[#E55925] text-white px-6 py-2 rounded-full text-sm font-medium mb-6"
           >
             Próximamente abierto
           </motion.div>
@@ -55,7 +55,7 @@ export default function Roccos2Nosotros() {
             initial={{ opacity: 0, y: 20 }}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="font-sans text-4xl md:text-6xl font-bold mb-4"
+            className="font-outfit text-4xl md:text-6xl font-bold mb-4"
           >
             Nuestro Concepto
           </motion.h1>
@@ -75,7 +75,7 @@ export default function Roccos2Nosotros() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div variants={itemVariants} className="order-2 md:order-1">
-              <h2 className="font-sans text-3xl md:text-4xl font-bold text-gray-800 mb-6">Quiénes Somos</h2>
+              <h2 className="font-outfit text-3xl md:text-4xl font-bold text-[#0C2232] mb-6">Quiénes Somos</h2>
               <p className="text-gray-600 mb-4">{restaurant.description}</p>
               <p className="text-gray-600 mb-6">{restaurant.history}</p>
               <p className="text-gray-600">
@@ -103,22 +103,22 @@ export default function Roccos2Nosotros() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="py-16 px-4 bg-gray-800 text-white"
+        className="py-16 px-4 bg-[#0C2232] text-white"
       >
         <div className="max-w-6xl mx-auto text-center">
-          <motion.h2 variants={itemVariants} className="font-sans text-3xl md:text-4xl font-bold mb-12">
+          <motion.h2 variants={itemVariants} className="font-outfit text-3xl md:text-4xl font-bold mb-12">
             Nuestros Valores
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <motion.div
               variants={itemVariants}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="bg-white text-gray-800 rounded-lg p-6 shadow-lg"
+              className="bg-white text-[#0C2232] rounded-lg p-6 shadow-lg"
             >
-              <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Coffee className="w-8 h-8" />
+              <div className="w-16 h-16 bg-[#E55925] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Coffee className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-sans text-xl font-bold mb-3">Calidad</h3>
+              <h3 className="font-outfit text-xl font-bold mb-3">Calidad</h3>
               <p className="text-gray-600">
                 Seleccionamos los mejores granos de café y los ingredientes más frescos para cada una de nuestras
                 creaciones.
@@ -128,12 +128,12 @@ export default function Roccos2Nosotros() {
             <motion.div
               variants={itemVariants}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="bg-white text-gray-800 rounded-lg p-6 shadow-lg"
+              className="bg-white text-[#0C2232] rounded-lg p-6 shadow-lg"
             >
-              <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Utensils className="w-8 h-8" />
+              <div className="w-16 h-16 bg-[#E55925] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Utensils className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-sans text-xl font-bold mb-3">Innovación</h3>
+              <h3 className="font-outfit text-xl font-bold mb-3">Innovación</h3>
               <p className="text-gray-600">
                 Nos mantenemos al día con las últimas tendencias gastronómicas para ofrecerte experiencias únicas y
                 sorprendentes.
@@ -143,12 +143,12 @@ export default function Roccos2Nosotros() {
             <motion.div
               variants={itemVariants}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="bg-white text-gray-800 rounded-lg p-6 shadow-lg"
+              className="bg-white text-[#0C2232] rounded-lg p-6 shadow-lg"
             >
-              <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Sparkles className="w-8 h-8" />
+              <div className="w-16 h-16 bg-[#E55925] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-sans text-xl font-bold mb-3">Diseño</h3>
+              <h3 className="font-outfit text-xl font-bold mb-3">Diseño</h3>
               <p className="text-gray-600">
                 Creamos espacios estéticos y funcionales donde cada detalle está pensado para mejorar tu experiencia.
               </p>
@@ -157,12 +157,12 @@ export default function Roccos2Nosotros() {
             <motion.div
               variants={itemVariants}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="bg-white text-gray-800 rounded-lg p-6 shadow-lg"
+              className="bg-white text-[#0C2232] rounded-lg p-6 shadow-lg"
             >
-              <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8" />
+              <div className="w-16 h-16 bg-[#E55925] rounded-full flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-8 h-8 text-white" />
               </div>
-              <h3 className="font-sans text-xl font-bold mb-3">Pasión</h3>
+              <h3 className="font-outfit text-xl font-bold mb-3">Pasión</h3>
               <p className="text-gray-600">
                 Amamos lo que hacemos y eso se refleja en cada producto que servimos y en la atención que brindamos.
               </p>
@@ -178,7 +178,7 @@ export default function Roccos2Nosotros() {
             initial={{ opacity: 0, y: 20 }}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="font-sans text-3xl md:text-4xl font-bold text-gray-800 mb-4"
+            className="font-outfit text-3xl md:text-4xl font-bold text-[#0C2232] mb-4"
           >
             Nuestro Camino
           </motion.h2>
@@ -208,7 +208,7 @@ export default function Roccos2Nosotros() {
               />
             </motion.div>
             <motion.div variants={itemVariants}>
-              <h2 className="font-sans text-3xl md:text-4xl font-bold text-gray-800 mb-6">Nuestra Visión</h2>
+              <h2 className="font-outfit text-3xl md:text-4xl font-bold text-[#0C2232] mb-6">Nuestra Visión</h2>
               <p className="text-gray-600 mb-4">
                 En Rocco's 2.0 aspiramos a redefinir la experiencia gastronómica en Dolores, combinando la tradición que
                 nos caracteriza con un enfoque moderno e innovador.
@@ -230,7 +230,7 @@ export default function Roccos2Nosotros() {
       {/* Team Section */}
       <motion.section variants={containerVariants} initial="hidden" animate="visible" className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto text-center">
-          <motion.h2 variants={itemVariants} className="font-sans text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <motion.h2 variants={itemVariants} className="font-outfit text-3xl md:text-4xl font-bold text-[#0C2232] mb-4">
             Nuestro Equipo
           </motion.h2>
           <motion.p variants={itemVariants} className="text-gray-600 max-w-2xl mx-auto mb-12">
@@ -252,8 +252,8 @@ export default function Roccos2Nosotros() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-sans text-xl font-bold text-gray-800 mb-1">Ana Rocco</h3>
-                <p className="text-gray-500 italic mb-3">Directora Creativa</p>
+                <h3 className="font-outfit text-xl font-bold text-[#0C2232] mb-1">Ana Rocco</h3>
+                <p className="text-[#E55925] italic mb-3">Directora Creativa</p>
                 <p className="text-gray-600">
                   Nieta del fundador, Ana trae una visión fresca y contemporánea al legado familiar, liderando este
                   nuevo concepto.
@@ -275,8 +275,8 @@ export default function Roccos2Nosotros() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-sans text-xl font-bold text-gray-800 mb-1">Martín Suárez</h3>
-                <p className="text-gray-500 italic mb-3">Barista Jefe</p>
+                <h3 className="font-outfit text-xl font-bold text-[#0C2232] mb-1">Martín Suárez</h3>
+                <p className="text-[#E55925] italic mb-3">Barista Jefe</p>
                 <p className="text-gray-600">
                   Con certificaciones internacionales, Martín es el responsable de nuestra selección de cafés de
                   especialidad.
@@ -298,8 +298,8 @@ export default function Roccos2Nosotros() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-sans text-xl font-bold text-gray-800 mb-1">Laura Méndez</h3>
-                <p className="text-gray-500 italic mb-3">Chef Ejecutiva</p>
+                <h3 className="font-outfit text-xl font-bold text-[#0C2232] mb-1">Laura Méndez</h3>
+                <p className="text-[#E55925] italic mb-3">Chef Ejecutiva</p>
                 <p className="text-gray-600">
                   Especialista en cocina de autor, Laura ha diseñado un menú que combina sabores tradicionales con
                   técnicas modernas.

@@ -29,8 +29,8 @@ export default function ModernMenuTabs({ products, hideAddButton = false }: Mode
                 key={category}
                 className={`px-4 py-2 m-1 whitespace-nowrap rounded-full text-sm font-medium transition-all duration-200 ${
                   activeCategory === category 
-                    ? "font-outfit text-gray-800 bg-yellow-400 shadow-md" 
-                    : "font-outfit text-gray-500 hover:text-gray-800"
+                    ? "font-outfit text-white bg-[#E55925] shadow-md" 
+                    : "font-outfit text-[#0C2232] hover:text-[#E55925]"
                 }`}
                 onClick={() => setActiveCategory(category)}
                 whileHover={{ scale: 1.05 }}
@@ -50,7 +50,7 @@ export default function ModernMenuTabs({ products, hideAddButton = false }: Mode
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
-              className="text-gray-600 font-outfit italic"
+              className="text-[#0C2232] font-outfit italic"
             >
               {products.find(product => product.category === activeCategory)?.description || ''}
             </motion.p>
@@ -84,7 +84,7 @@ export default function ModernMenuTabs({ products, hideAddButton = false }: Mode
                   />
                   {product.isAvailable === false && (
                     <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                      <div className="bg-black bg-opacity-50 text-white px-4 py-2 rounded-lg font-outfit">
+                      <div className="bg-[#0C2232] bg-opacity-70 text-white px-4 py-2 rounded-lg font-outfit">
                         No disponible
                       </div>
                     </div>
@@ -101,10 +101,10 @@ export default function ModernMenuTabs({ products, hideAddButton = false }: Mode
               className="text-center py-16 px-4"
             >
               <div className="max-w-sm mx-auto">
-                <p className="text-gray-500 font-outfit mb-4">No hay productos en esta categoría.</p>
+                <p className="text-[#0C2232] font-outfit mb-4">No hay productos en esta categoría.</p>
                 <button 
                   onClick={() => setActiveCategory(categories[0] || '')}
-                  className="font-outfit text-gray-500 hover:text-gray-800 px-4 py-2 rounded-full border border-current"
+                  className="font-outfit text-[#0C2232] hover:text-[#E55925] px-4 py-2 rounded-full border border-current"
                 >
                   Ver {categories[0] || 'otros productos'}
                 </button>

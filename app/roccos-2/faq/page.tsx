@@ -70,7 +70,7 @@ export default function Roccos2FAQ() {
   ]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 py-16">
+    <div className="min-h-screen bg-white  py-16">
       <div className="max-w-4xl mx-auto px-4">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}

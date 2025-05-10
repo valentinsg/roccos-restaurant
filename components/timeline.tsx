@@ -59,17 +59,100 @@ export default function Timeline({ events, variant }: TimelineProps) {
       description: "text-[#111111]/90 font-outfit",
     },
     modern: {
-      container: "bg-[#FAF4E1]",
-      line: "bg-[#E6C163]",
-      dot: "bg-[#E6C163] border-[#A82531]",
-      card: "bg-white border border-[#A82531]/20 shadow-lg hover:shadow-xl transition-shadow duration-300",
-      year: "bg-[#E6C163] text-[#A82531] font-outfit",
-      title: "text-[#A82531] font-outfit font-bold",
-      description: "text-[#111111]/80 font-outfit",
+      container: "bg-white",
+      line: "bg-[#E55925]",
+      dot: "bg-[#E55925] border-[#1A3E5A]",
+      card: "bg-white border-2 border-[#E55925]/20 shadow-lg hover:shadow-xl transition-shadow duration-300",
+      year: "bg-[#E55925] text-white font-manrope",
+      title: "text-[#0C2232] font-manrope font-bold",
+      description: "text-[#0C2232]/80 font-outfit",
     },
   }
 
   const styles = variant === "classic" ? timelineStyles.classic : timelineStyles.modern
+
+  // Componente para los botones de navegación de imágenes
+  const ImageNavigationButtons = ({ event, index }: { event: TimelineEvent, index: number }) => {
+    if (!event.images || event.images.length <= 1) return null;
+    
+    return (
+      <>
+        <button 
+          onClick={() => nextImage(index, event.images!.length)}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-300"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+        <button 
+          onClick={() => handleImageChange(index, (activeImages[index] - 1 + event.images!.length) % event.images!.length)}
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-300"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 bg-black/50 px-4 py-2 rounded-full">
+          {event.images.map((_, dotIndex) => (
+            <button
+              key={dotIndex}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                dotIndex === (activeImages[index] || 0)
+                  ? 'bg-white scale-125'
+                  : 'bg-white/50 hover:bg-white/80'
+              }`}
+              onClick={() => handleImageChange(index, dotIndex)}
+            />
+          ))}
+        </div>
+      </>
+    );
+  };
+
+  // Componente para la tarjeta de contenido
+  const EventCard = ({ event, styles }: { event: TimelineEvent, styles: any }) => (
+    <div className={`${styles.card} rounded-xl p-6 h-full flex flex-col justify-center`}>
+      <div className={`${styles.year} w-fit px-4 py-1.5 rounded-full text-md font-semibold mb-4`}>
+        {event.year}
+      </div>
+      <h3 className={`${styles.title} text-3xl mb-4`}>{event.title}</h3>
+      <p className={`${styles.description} text-xl leading-relaxed`}>{event.description}</p>
+    </div>
+  );
+
+  // Componente para la galería de imágenes
+  const ImageGallery = ({ event, index, isInView }: { event: TimelineEvent, index: number, isInView: boolean }) => {
+    if (!event.images || event.images.length === 0) return null;
+    
+    const backgroundImage = variant === "modern" 
+      ? 'url(/images/textures/coffee-pattern.svg)' 
+      : 'url(/images/textures/background-fachero.webp)';
+    
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="relative h-full w-4/5 mx-auto rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+      >
+        <div className="relative h-full w-full" style={{ backgroundImage, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          {event.images.map((image, imgIndex) => (
+            <Image
+              key={imgIndex}
+              src={image || "/placeholder.svg?height=300&width=400"}
+              alt={`${event.title} - Imagen ${imgIndex + 1}`}
+              fill
+              className={`hover:scale-105 transition-transform duration-300 object-contain ${
+                imgIndex === (activeImages[index] || 0) ? 'opacity-100' : 'opacity-0 absolute'
+              }`}
+            />
+          ))}
+        </div>
+        <ImageNavigationButtons event={event} index={index} />
+      </motion.div>
+    );
+  };
 
   return (
     <div className={`${styles.container} py-16`}>
@@ -115,13 +198,7 @@ export default function Timeline({ events, variant }: TimelineProps) {
               >
                 {/* Contenido del evento */}
                 <div className={`w-full md:w-1/2 h-full ${isEven ? "md:px-4 md:text-right" : "md:px-4"} z-20 relative`}>
-                  <div className={`${styles.card} rounded-xl p-6 h-full flex flex-col justify-center`}>
-                    <div className={`${styles.year} w-fit px-4 py-1.5 rounded-full text-md font-semibold mb-4`}>
-                      {event.year}
-                    </div>
-                    <h3 className={`${styles.title} text-3xl mb-4`}>{event.title}</h3>
-                    <p className={`${styles.description} text-xl leading-relaxed`}>{event.description}</p>
-                  </div>
+                  <EventCard event={event} styles={styles} />
                 </div>
 
                 {/* Punto en la línea de tiempo */}
@@ -138,61 +215,7 @@ export default function Timeline({ events, variant }: TimelineProps) {
                 <div
                   className={`hidden h-full md:block md:w-1/2 ${isEven ? "md:px-4" : "md:px-4"} z-20 relative flex items-center justify-center`}
                 >
-                  {event.images && event.images.length > 0 && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="relative h-full w-4/5 mx-auto rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-                    >
-                      <div className="relative h-full w-full" style={{ backgroundImage: 'url(/images/textures/background-fachero.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                        {event.images.map((image, imgIndex) => (
-                          <Image
-                            key={imgIndex}
-                            src={image || "/placeholder.svg?height=300&width=400"}
-                            alt={`${event.title} - Imagen ${imgIndex + 1}`}
-                            fill
-                            className={`hover:scale-105 transition-transform duration-300 object-contain ${
-                              imgIndex === (activeImages[index] || 0) ? 'opacity-100' : 'opacity-0 absolute'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      {event.images && event.images.length > 1 && (
-                        <>
-                          <button 
-                            onClick={() => nextImage(index, event.images!.length)}
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-300"
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-                          </button>
-                          <button 
-                            onClick={() => handleImageChange(index, (activeImages[index] - 1 + event.images!.length) % event.images!.length)}
-                            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-300"
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                            </svg>
-                          </button>
-                          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 bg-black/50 px-4 py-2 rounded-full">
-                            {event.images.map((_, dotIndex) => (
-                              <button
-                                key={dotIndex}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                  dotIndex === (activeImages[index] || 0)
-                                    ? 'bg-white scale-125'
-                                    : 'bg-white/50 hover:bg-white/80'
-                                }`}
-                                onClick={() => handleImageChange(index, dotIndex)}
-                              />
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </motion.div>
-                  )}
+                  <ImageGallery event={event} index={index} isInView={isInView} />
                 </div>
               </motion.div>
             </div>

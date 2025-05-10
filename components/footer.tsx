@@ -19,11 +19,11 @@ export default function Footer({ variant }: FooterProps) {
       copyright: "text-[#E6C163]/70",
     },
     modern: {
-      container: "bg-[#1E3A29] dark:bg-[#0D1F16] text-[#E6C163]",
+      container: "bg-[#0C2232] text-white",
       title: "font-outfit text-2xl font-bold tracking-wide mb-3",
-      link: "text-[#E6C163] hover:text-[#FAF4E1] transition-colors",
-      icon: "text-[#E6C163] hover:text-[#FAF4E1] transition-colors",
-      copyright: "text-[#E6C163]/70",
+      link: "text-[#E55925] hover:text-[#E55925] transition-colors",
+      icon: "text-[#E55925] hover:text-[#E55925] transition-colors",
+      copyright: "text-[#E55925]/70",
     },
   }
 

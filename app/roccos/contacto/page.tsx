@@ -53,7 +53,7 @@ export default function RoccosContacto() {
       <div className="max-w-6xl mx-auto px-4">
         <motion.div className="text-center mb-12">
           <span className="text-[#A82531] font-medium uppercase tracking-wider text-sm">Haznos tu consulta</span>
-          <h1 className="font-outfit text-4xl sm:text-5xl md:text-6xl font-bold text-[#A82531] mt-2">Contacto</h1>
+          <h1 className="font-outfit text-4xl sm:text-5xl md:text-6xl font-bold text-[#A82531] mt-2">Contacto y Sugerencias</h1>
           <div className="w-24 h-1 bg-[#E6C163] mx-auto mt-6"></div>
           <p className="text-gray-600 max-w-4xl mx-auto font-outfit mt-6 font-outfit text-lg ">
             Estamos aquí para responder tus preguntas, recibir tus comentarios o ayudarte con reservas. No dudes en

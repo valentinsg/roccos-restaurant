@@ -524,7 +524,7 @@ export default function Roccos2Home() {
         </motion.div>
       </motion.section>
       {/* Sección de Testimonios */}
-      <section className="py-20 px-4 bg-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-[#0C2232] relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 bg-repeat"
           style={{
@@ -538,7 +538,7 @@ export default function Roccos2Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-manrope text-4xl md:text-5xl font-extrabold text-[#1A3E5A] mb-12 text-center"
+            className="font-manrope text-4xl md:text-5xl font-extrabold text-white mb-12 text-center"
           >
             Lo que dicen nuestros clientes
           </motion.h2>
@@ -570,7 +570,7 @@ export default function Roccos2Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 * index }}
-                className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300"
+                className="bg-white p-6 rounded-xl shadow-lg border-2 border-[#E55925] hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-[#E55925]">
@@ -606,7 +606,7 @@ export default function Roccos2Home() {
             className="mt-12 text-center"
           >
             <Link href="/roccos-2/opiniones">
-              <button className="bg-[#1A3E5A] hover:bg-[#0D2A40] text-white font-outfit text-lg py-3 px-8 rounded-md flex items-center mx-auto font-medium transition-colors duration-300">
+            <button className="relative inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 text-white font-bold font-outfit uppercase tracking-wide border-2 border-[#E55925] rounded-xl overflow-hidden transition-all duration-300 hover:bg-[#E55925] hover:text-white shadow-lg shadow-black/30 backdrop-blur-md bg-white/10">
                 Ver más opiniones <ArrowRight className="ml-2 w-5 h-5" />
               </button>
             </Link>
@@ -614,49 +614,55 @@ export default function Roccos2Home() {
         </div>
       </section>
 
-
       {/* Info Section */}
-      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-800 relative">
+      <section className="py-20 px-4 bg-white relative">
         <div
           className="absolute inset-0 opacity-5 bg-repeat"
           style={{ backgroundImage: "url('/images/textures/coffee-pattern.svg')" }}
         ></div>
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
               className="order-2 md:order-1"
             >
-              <h2 className="font-outfit text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6">
+              <h2 className="font-manrope text-3xl md:text-4xl font-extrabold text-[#0C2232] mb-6">
                 Un nuevo concepto
               </h2>
-              <p className="font-manrope text-gray-600 dark:text-gray-300 mb-6">{restaurant.description}</p>
-              <p className="font-manrope text-gray-600 dark:text-gray-300 mb-8">
+              <p className="font-manrope text-[#0C2232] mb-6 leading-relaxed">{restaurant.description}</p>
+              <p className="font-manrope text-[#0C2232] mb-8 leading-relaxed">
                 Diseñado para quienes buscan un ambiente contemporáneo y minimalista, con productos de alta calidad y
                 atención personalizada.
               </p>
-              <div className="flex flex-col space-y-3 mb-8 text-gray-600 dark:text-gray-300">
+              <div className="flex flex-col space-y-4 mb-10 text-[#0C2232]">
                 <div className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-2 text-[#1E3A29] dark:text-roccos-accent" />
-                  <span>{restaurant.address}</span>
+                  <MapPin className="w-6 h-6 mr-3 text-[#E55925]" />
+                  <a 
+                    href="https://maps.google.com/?q=Brandsen+39,+Dolores,+Buenos+Aires" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-manrope hover:text-[#E55925] transition-colors duration-300"
+                  >
+                    Brandsen 39, Dolores
+                  </a>
                 </div>
                 <div className="flex items-center">
-                  <Phone className="w-5 h-5 mr-2 text-[#1E3A29] dark:text-roccos-accent" />
-                  <span>WhatsApp: {restaurant.whatsapp}</span>
+                  <Phone className="w-6 h-6 mr-3 text-[#E55925]" />
+                  <span className="font-manrope">WhatsApp: {restaurant.whatsapp}</span>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="w-5 h-5 mr-2 text-[#1E3A29] dark:text-roccos-accent" />
-                  <span>{restaurant.hours}</span>
+                  <Clock className="w-6 h-6 mr-3 text-[#E55925]" />
+                  <span className="font-manrope">{restaurant.hours}</span>
                 </div>
               </div>
               <Link href="/roccos-2/nosotros">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-[#1E3A29] text-white dark:bg-[#0D1F16] font-outfit text-lg py-3 px-8 rounded-md flex items-center font-medium"
+                  className="bg-[#E55925] hover:bg-[#d14e1f] text-white font-manrope text-lg py-3 px-8 rounded-md flex items-center font-medium transition-colors duration-300 shadow-lg"
                 >
                   Conoce más <ArrowRight className="ml-2 w-5 h-5" />
                 </motion.button>
@@ -666,15 +672,20 @@ export default function Roccos2Home() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-xl order-1 md:order-2"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative h-80 md:h-[450px] rounded-xl overflow-hidden shadow-2xl order-1 md:order-2"
             >
-              <Image
-                src="/placeholder.svg?height=600&width=800"
-                alt="Interior de Rocco's 2.0"
-                fill
-                className="object-cover"
-              />
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5726856896483!2d-57.68040672392344!3d-36.31507887210083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959a1b6c3b4a9c8d%3A0x4c1b08c65c8c2e6e!2sBrandsen%2039%2C%20Dolores%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1699123456789!5m2!1ses!2sar"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0"
+              ></iframe>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/30 to-transparent"></div>
             </motion.div>
           </div>
         </div>
