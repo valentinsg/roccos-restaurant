@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Send, MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react"
+import { Send, MapPin, Phone, Mail, Clock, Facebook, Instagram, Globe } from "lucide-react"
 import { getRestaurantById } from "@/data/restaurants"
 
 export default function Roccos2Contacto() {
@@ -54,13 +54,13 @@ export default function Roccos2Contacto() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0C2232] py-16">
+    <div className="min-h-screen bg-white py-16">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-roccos2-heading text-4xl font-bold text-[#0C2232] dark:text-white mb-6 text-center"
+          className="font-roccos2-heading text-4xl font-bold text-[#0C2232] mb-6 text-center"
         >
           Contacto
         </motion.h1>
@@ -68,7 +68,7 @@ export default function Roccos2Contacto() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-12 text-center max-w-2xl mx-auto"
+          className="font-roccos2-body text-[#0C2232] mb-12 text-center max-w-2xl mx-auto"
         >
           Estamos ansiosos por escucharte. Envíanos tus preguntas, sugerencias o comentarios sobre nuestra próxima
           apertura.
@@ -81,8 +81,8 @@ export default function Roccos2Contacto() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="bg-white dark:bg-[#0C2232] rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-8">
-              <h2 className="font-roccos2-heading text-2xl font-bold text-[#0C2232] dark:text-white mb-6">
+            <div className="bg-white rounded-lg shadow-sm border border-[#0C2232]  p-8">
+              <h2 className="font-roccos2-heading text-2xl font-bold text-[#0C2232] mb-6">
                 Envíanos un mensaje
               </h2>
 
@@ -97,7 +97,7 @@ export default function Roccos2Contacto() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label htmlFor="name" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
+                    <label htmlFor="name" className="block font-roccos2-body text-[#0C2232] mb-1">
                       Nombre completo *
                     </label>
                     <input
@@ -107,12 +107,12 @@ export default function Roccos2Contacto() {
                       value={formState.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
+                      className="w-full px-4 py-2 border border-[#0C2232] font-manrope text-[#0C2232] bg-white rounded-md focus:outline-none focus:ring-2 "
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
+                    <label htmlFor="email" className="block font-roccos2-body text-[#0C2232] mb-1">
                       Correo electrónico *
                     </label>
                     <input
@@ -122,12 +122,12 @@ export default function Roccos2Contacto() {
                       value={formState.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
+                      className="w-full px-4 py-2 border border-[#0C2232] font-manrope text-[#0C2232] bg-white rounded-md focus:outline-none focus:ring-2 "
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="phone" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
+                    <label htmlFor="phone" className="block font-roccos2-body text-[#0C2232] mb-1">
                       Teléfono
                     </label>
                     <input
@@ -136,12 +136,12 @@ export default function Roccos2Contacto() {
                       name="phone"
                       value={formState.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
+                      className="w-full px-4 py-2 border border-[#0C2232] font-manrope text-[#0C2232] bg-white rounded-md focus:outline-none focus:ring-2"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
+                    <label htmlFor="subject" className="block font-roccos2-body text-[#0C2232] mb-1">
                       Asunto *
                     </label>
                     <select
@@ -150,7 +150,7 @@ export default function Roccos2Contacto() {
                       value={formState.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
+                      className="w-full px-4 py-2 border border-[#0C2232] font-manrope text-[#0C2232] bg-white rounded-md focus:outline-none focus:ring-2"
                     >
                       <option value="">Selecciona una opción</option>
                       <option value="info">Información general</option>
@@ -162,7 +162,7 @@ export default function Roccos2Contacto() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block font-roccos2-body text-[#0C2232] dark:text-gray-300 mb-1">
+                    <label htmlFor="message" className="block font-roccos2-body text-[#0C2232] mb-1">
                       Mensaje *
                     </label>
                     <textarea
@@ -172,7 +172,7 @@ export default function Roccos2Contacto() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E55925] dark:focus:ring-[#E55925] dark:bg-[#0C2232] dark:text-white"
+                      className="w-full px-4 py-2 border border-[#0C2232] font-manrope text-[#0C2232] bg-white rounded-md focus:outline-none focus:ring-2"
                     ></textarea>
                   </div>
 
@@ -183,11 +183,12 @@ export default function Roccos2Contacto() {
                       name="newsletter"
                       checked={formState.newsletter}
                       onChange={handleChange}
-                      className="h-4 w-4 text-[#E55925] focus:ring-[#E55925] border-gray-300 rounded"
+                      className="h-4 w-4 text-[#0C2232]  
+                      bg-white focus:ring-[#E55925] border-[#0C2232] rounded"
                     />
                     <label
                       htmlFor="newsletter"
-                      className="ml-2 block font-roccos2-body text-[#0C2232] dark:text-gray-300"
+                      className="ml-2 block font-manrope text-[#0C2232]"
                     >
                       Quiero recibir novedades sobre la apertura y promociones
                     </label>
@@ -223,20 +224,20 @@ export default function Roccos2Contacto() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <div className="bg-[#0C2232] dark:bg-[#0C2232] text-white rounded-lg shadow-md p-8 h-full">
-              <h2 className="font-roccos2-heading text-2xl font-bold mb-8">Información de contacto</h2>
+            <div className="bg-transparent text-[#0C2232] border-[#0C2232] border  rounded-lg shadow-md p-8 h-full">
+              <h2 className="font-manrope text-2xl font-bold mb-8">Información de contacto</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <MapPin className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#E55925]" />
+                  <MapPin className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#0C2232]" />
                   <div>
-                    <h3 className="font-roccos2-heading text-lg font-medium mb-2">Dirección</h3>
-                    <p className="font-roccos2-body">{restaurant.address}</p>
+                    <h3 className="font-manrope text-lg font-medium mb-2">Dirección</h3>
+                    <p className="font-manrope">{restaurant.address}</p>
                     <a
                       href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.address)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block mt-2 text-[#E55925] hover:underline font-roccos2-body"
+                      className="inline-block mt-2 text-[#0C2232] hover:underline font-manrope"
                     >
                       Ver en Google Maps
                     </a>
@@ -244,43 +245,43 @@ export default function Roccos2Contacto() {
                 </div>
 
                 <div className="flex items-start">
-                  <Phone className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#E55925]" />
+                  <Phone className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#0C2232]" />
                   <div>
-                    <h3 className="font-roccos2-heading text-lg font-medium mb-2">Contacto</h3>
-                    <p className="font-roccos2-body">WhatsApp: {restaurant.whatsapp}</p>
+                    <h3 className="font-manrope text-lg font-medium mb-2">Contacto</h3>
+                    <p className="font-manrope">WhatsApp: {restaurant.whatsapp}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <Mail className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#E55925]" />
+                  <Mail className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#0C2232]" />
                   <div>
-                    <h3 className="font-roccos2-heading text-lg font-medium mb-2">Correo electrónico</h3>
-                    <p className="font-roccos2-body">info@roccos2.com.ar</p>
-                    <p className="font-roccos2-body">hola@roccos2.com.ar</p>
+                    <h3 className="font-manrope text-lg font-medium mb-2">Correo electrónico</h3>
+                    <p className="font-manrope">info@roccos2.com.ar</p>
+                    <p className="font-manrope">hola@roccos2.com.ar</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <Clock className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#E55925]" />
+                  <Clock className="w-6 h-6 mr-4 flex-shrink-0 mt-1 text-[#0C2232]" />
                   <div>
-                    <h3 className="font-roccos2-heading text-lg font-medium mb-2">Horarios (Próximamente)</h3>
-                    <p className="font-roccos2-body">Lunes a Domingo:</p>
-                    <p className="font-roccos2-body">{restaurant.hours}</p>
+                    <h3 className="font-manrope text-lg font-medium mb-2">Horarios (Próximamente)</h3>
+                    <p className="font-manrope">Lunes a Domingo:</p>
+                    <p className="font-manrope">{restaurant.hours}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-6 h-6 mr-4 flex-shrink-0 mt-1 flex justify-center">
-                    <Facebook className="w-5 h-5 text-[#E55925]" />
+                  <div className="w-6 h-6 mr-4 flex-shrink-0 border-[#0C2232] border rounded-full mt-1 flex justify-center">
+                    <Globe className="w-5 h-5 text-[#0C2232]" />
                   </div>
                   <div>
-                    <h3 className="font-roccos2-heading text-lg font-medium mb-2">Redes sociales</h3>
+                    <h3 className="font-manrope text-lg font-medium mb-2">Redes sociales</h3>
                     <div className="space-y-2">
                       <a
                         href={restaurant.social.facebook}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center text-white hover:text-[#E55925] transition-colors font-roccos2-body"
+                        className="flex items-center text-[#0C2232] hover:text-[#E55925] transition-colors font-manrope"
                       >
                         <Facebook className="w-5 h-5 mr-2" />
                         <span>Facebook</span>
@@ -289,7 +290,7 @@ export default function Roccos2Contacto() {
                         href={restaurant.social.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center text-white hover:text-[#E55925] transition-colors font-roccos2-body"
+                        className="flex items-center text-[#0C2232] hover:text-[#E55925] transition-colors font-manrope"
                       >
                         <Instagram className="w-5 h-5 mr-2" />
                         <span>Instagram</span>

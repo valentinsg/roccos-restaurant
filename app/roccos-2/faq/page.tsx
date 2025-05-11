@@ -18,65 +18,50 @@ export default function Roccos2FAQ() {
 
   const faqItems: FAQItem[] = [
     {
-      question: "¿Cuándo abrirá Rocco's 2.0?",
+      question: "¿Cuáles son los horarios de atención?",
       answer:
-        "Estamos trabajando arduamente para abrir nuestras puertas muy pronto. Aunque no tenemos una fecha exacta, estimamos que será en los próximos meses. Te invitamos a seguirnos en nuestras redes sociales para estar al tanto de todas las novedades y la fecha oficial de apertura.",
+        "Nuestro horario de atención es de 10:00 a 15:00 y de 19:00 a 01:00, de miércoles a lunes. Los martes permanecemos cerrados. Los feriados mantenemos el mismo horario, pero te recomendamos reservar con anticipación.",
     },
     {
-      question: "¿Qué tipo de café servirán?",
+      question: "¿Hacen delivery?",
       answer:
-        "En Rocco's 2.0 serviremos café de especialidad de diferentes orígenes, tostado por expertos. Contaremos con métodos de preparación variados como espresso, filtrado, cold brew y más. Nuestro equipo de baristas está altamente capacitado para ofrecerte la mejor experiencia de café.",
+        "Sí, contamos con servicio de delivery propio en toda la ciudad de Dolores. Puedes hacer tu pedido por WhatsApp al 2245401066 o a través de nuestra página web en la sección 'Pedido'.",
     },
     {
-      question: "¿Cuáles serán los horarios de atención?",
+      question: "¿Se puede reservar mesa?",
       answer:
-        "Nuestro horario de atención será de 08:00 a 14:00 y de 17:00 a 23:30, de lunes a domingo. Esto nos permitirá atenderte tanto para desayunos como para meriendas y cenas.",
+        "Sí, aceptamos reservas para grupos de cualquier tamaño. Te recomendamos hacer tu reserva con al menos 24 horas de anticipación, especialmente para fines de semana y feriados. Puedes reservar llamando al 2245441330 o a través de nuestra sección de contacto.",
     },
     {
-      question: "¿Tendrán opciones vegetarianas y veganas?",
+      question: "¿Tienen opciones vegetarianas?",
       answer:
-        "Sí, nuestro menú incluirá una amplia variedad de opciones vegetarianas y veganas. Creemos en la inclusión y queremos que todos puedan disfrutar de nuestra propuesta gastronómica, independientemente de sus preferencias alimentarias.",
+        "Sí, contamos con varias opciones vegetarianas en nuestro menú, incluyendo pizzas, pastas y ensaladas. Todas están claramente identificadas en nuestra carta. Si tienes alguna restricción alimentaria específica, no dudes en consultarnos.",
     },
     {
-      question: "¿Dónde estará ubicado Rocco's 2.0?",
+      question: "¿Aceptan tarjetas de crédito y débito?",
       answer:
-        "Estaremos ubicados en Rico 39, en el centro de Dolores, Buenos Aires. Es una ubicación estratégica de fácil acceso y con mucho movimiento.",
+        "Sí, aceptamos todas las tarjetas de crédito y débito, incluyendo Visa, Mastercard, American Express y Cabal. También aceptamos pagos en efectivo y transferencias bancarias.",
     },
     {
-      question: "¿Tendrán servicio de delivery?",
+      question: "¿Tienen estacionamiento?",
       answer:
-        "Sí, contaremos con servicio de delivery propio para toda la ciudad de Dolores. Podrás hacer tu pedido a través de WhatsApp o nuestra página web, y te lo llevaremos a donde estés.",
+        "No contamos con estacionamiento propio, pero hay amplio espacio para estacionar en la calle frente al local y en las calles aledañas. Los fines de semana recomendamos llegar con tiempo para encontrar lugar.",
     },
     {
-      question: "¿Se podrá trabajar o estudiar en el local?",
+      question: "¿Qué medidas de seguridad e higiene implementan?",
       answer:
-        "¡Absolutamente! Hemos diseñado espacios específicos con enchufes y WiFi de alta velocidad para quienes quieran trabajar o estudiar mientras disfrutan de un buen café. Nuestro ambiente será tranquilo y acogedor, perfecto para la concentración.",
-    },
-    {
-      question: "¿Qué métodos de pago aceptarán?",
-      answer:
-        "Aceptaremos todos los métodos de pago: efectivo, tarjetas de crédito y débito, transferencias bancarias y billeteras virtuales como Mercado Pago.",
-    },
-    {
-      question: "¿Tendrán eventos o noches temáticas?",
-      answer:
-        "Sí, planeamos organizar eventos como catas de café, noches de música en vivo, talleres de barismo y más. Queremos que Rocco's 2.0 sea un espacio cultural además de gastronómico.",
-    },
-    {
-      question: "¿Cómo puedo estar al tanto de las novedades?",
-      answer:
-        "La mejor manera de mantenerte informado es siguiéndonos en nuestras redes sociales: Instagram y Facebook como @Roccos2.0. También puedes suscribirte a nuestro newsletter en la página de contacto.",
+        "Seguimos estrictamente los protocolos de seguridad e higiene establecidos por la autoridad sanitaria. Nuestros empleados están capacitados para manejar y preparar los alimentos de manera segura y higiénica.",
     },
   ]
 
-  return (
-    <div className="min-h-screen bg-white  py-16">
+    return (
+    <div className="min-h-screen bg-white py-16">
       <div className="max-w-4xl mx-auto px-4">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-roccos2-heading text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center"
+          className="font-manrope font-bold text-4xl text-[#0C2232] mb-6 text-center"
         >
           Preguntas Frecuentes
         </motion.h1>
@@ -84,7 +69,7 @@ export default function Roccos2FAQ() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-roccos2-body text-gray-600 dark:text-gray-300 mb-12 text-center"
+          className="font-manrope text-lg text-[#0C2232] mb-12 text-center"
         >
           Todo lo que necesitas saber sobre Rocco's 2.0 antes de nuestra apertura
         </motion.p>
@@ -96,19 +81,19 @@ export default function Roccos2FAQ() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden"
+              className="bg-white rounded-lg shadow-sm border border-[#0C2232] overflow-hidden"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
+                className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none text-[#0C2232]"
               >
-                <span className="font-roccos2-heading font-medium text-lg text-gray-800 dark:text-white">
+                <span className="font-manrope font-medium text-lg">
                   {item.question}
                 </span>
                 {openIndex === index ? (
-                  <ChevronUp className="h-5 w-5 text-yellow-500" />
+                  <ChevronUp className="h-5 w-5 text-[#0C2232]" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-yellow-500" />
+                  <ChevronDown className="h-5 w-5 text-[#0C2232]" />
                 )}
               </button>
               <AnimatePresence>
@@ -120,8 +105,8 @@ export default function Roccos2FAQ() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 py-4 border-t border-gray-100 dark:border-gray-700">
-                      <p className="font-roccos2-body text-gray-600 dark:text-gray-300">{item.answer}</p>
+                    <div className="px-6 py-4 border-t border-[#0C2232]">
+                      <p className="font-manrope text-lg text-[#0C2232]">{item.answer}</p>
                     </div>
                   </motion.div>
                 )}
@@ -136,12 +121,12 @@ export default function Roccos2FAQ() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-12 text-center"
         >
-          <p className="font-roccos2-body text-gray-600 dark:text-gray-300 mb-4">
+          <p className="font-manrope text-lg text-[#0C2232] mb-4">
             ¿Tienes más preguntas sobre nuestra próxima apertura?
           </p>
           <a
             href="/roccos-2/contacto"
-            className="inline-block bg-yellow-400 dark:bg-yellow-500 text-gray-800 dark:text-gray-900 font-roccos2-heading font-medium py-3 px-8 rounded-md hover:bg-yellow-500 dark:hover:bg-yellow-600 transition-colors"
+            className="inline-block bg-[#0C2232] text-white font-manrope font-medium py-3 px-8 rounded-md hover:bg-[#0C2232] transition-colors"
           >
             Contáctanos
           </a>

@@ -524,7 +524,7 @@ export default function Roccos2Home() {
         </motion.div>
       </motion.section>
       {/* Sección de Testimonios */}
-      <section className="py-20 px-4 bg-[#0C2232] relative overflow-hidden">
+      {/* <section className="py-20 px-4 bg-[#0C2232] relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 bg-repeat"
           style={{
@@ -612,7 +612,7 @@ export default function Roccos2Home() {
             </Link>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Info Section */}
       <section className="py-20 px-4 bg-white relative">
