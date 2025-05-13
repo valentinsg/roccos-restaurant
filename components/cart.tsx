@@ -28,12 +28,12 @@ export default function Cart({ variant }: CartProps) {
 
   const cartStyles = {
     classic: {
-      button: "bg-[#A82531] text-[#FAF4E1] hover:bg-[#8A1D27]",
+      button: "bg-[#A82531] text-[#FAF4E1] font-outfit hover:bg-[#8A1D27]",
       container: "bg-white border border-gray-200 text-gray-800",
       header: "bg-[#A82531] text-[#FAF4E1]",
       item: "border-b border-gray-200",
-      itemName: "font-serif",
-      price: "font-serif text-[#A82531]",
+      itemName: "font-outfit",
+      price: "font-outfit text-[#A82531]",
       checkout: "bg-[#A82531] text-[#FAF4E1] hover:bg-[#8A1D27]",
       quantityButton: "border border-gray-300 hover:bg-gray-100",
     },
@@ -122,7 +122,7 @@ export default function Cart({ variant }: CartProps) {
   }
 
   return (
-    <div className="relative z-40">
+    <div className="relative z-40 p-6">
       {/* Cart Button */}
       <motion.button
         variants={buttonVariants}
@@ -168,7 +168,7 @@ export default function Cart({ variant }: CartProps) {
               className={`${styles.container} cart-container fixed top-0 right-0 h-full w-full sm:w-96 shadow-xl overflow-hidden flex flex-col`}
             >
               {/* Header */}
-              <div className={`${styles.header} p-4 flex justify-between items-center`}>
+              <div className={`${styles.header} p-8 flex justify-between items-center`}>
                 <h2 className="text-xl font-bold flex items-center">
                   <ShoppingCart className="h-5 w-5 mr-2" />
                   Tu Pedido ({totalItems})
@@ -264,11 +264,11 @@ export default function Cart({ variant }: CartProps) {
                   whileTap={{ scale: 0.97 }}
                   onClick={sendToWhatsApp}
                   disabled={cart.length === 0}
-                  className={`${styles.checkout} w-full py-3 rounded-md font-bold flex items-center justify-center ${
+                  className={`${styles.checkout} w-full py-3 rounded-md font-outfit font-bold flex items-center justify-center ${
                     cart.length === 0 ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
-                  <Send className="h-5 w-5 mr-2" />
+                  <Send className="font-outfit h-5 w-5 mr-2" />
                   Enviar pedido por WhatsApp
                 </motion.button>
               </motion.div>

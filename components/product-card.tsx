@@ -15,47 +15,47 @@ type ProductCardProps = {
 
 const roccosStyles = {
   classic: {
-    container: "bg-transperent rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-2", 
-    title: "font-outfit text-xl text-[#A82531]", 
+    container: "bg-transperent rounded-xl p-2 sm:p-4 md:p-6 text-center transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2", 
+    title: "font-outfit text-lg sm:text-xl text-[#A82531]", 
     description: "text-gray-600 font-outfit",
-    price: "font-outfit text-xl font-bold text-[#A82531]",
-    originalPrice: "font-outfit text-gray-500 line-through text-sm",
-    discount: "bg-[#A82531] text-white text-xs font-outfit px-2 py-1 rounded-full",
+    price: "font-outfit text-lg sm:text-xl font-bold text-[#A82531]",
+    originalPrice: "font-outfit text-gray-500 line-through text-xs sm:text-sm",
+    discount: "bg-[#A82531] text-white text-xs font-outfit px-1 py-0.5 sm:px-2 sm:py-1 rounded-full",
     promoTag: "bg-yellow-400 text-[#A82531] font-outfit font-bold",
-    button: "border border-[#A82531] text-[#A82531] font-outfit text-sm rounded-full px-4 py-1 hover:bg-[#A82531] hover:text-[#FAF4E1] transition-all",
+    button: "border border-[#A82531] text-[#A82531] font-outfit text-xs sm:text-sm rounded-full px-3 py-1 sm:px-4 sm:py-1 hover:bg-[#A82531] hover:text-[#FAF4E1] transition-all",
   },
   modern: {
-    container: "bg-transperent rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-2",
-    title: "font-manrope text-xl font-bold text-gray-800",
+    container: "bg-transperent rounded-xl p-2 sm:p-4 md:p-6 text-center transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2",
+    title: "font-manrope text-lg sm:text-xl font-bold text-gray-800",
     description: "text-gray-500 font-manrope",
-    price: "font-manrope text-xl font-bold text-gray-800",
-    originalPrice: "font-manrope text-gray-400 line-through text-sm",
-    discount: "bg-yellow-400 text-gray-800 text-xs font-manrope px-2 py-1 rounded-full",
+    price: "font-manrope text-lg sm:text-xl font-bold text-gray-800",
+    originalPrice: "font-manrope text-gray-400 line-through text-xs sm:text-sm",
+    discount: "bg-yellow-400 text-gray-800 text-xs font-manrope px-1 py-0.5 sm:px-2 sm:py-1 rounded-full",
     promoTag: "bg-yellow-400 text-gray-800 font-manrope font-bold",
-    button: "border border-[#A82531] text-[#A82531] font-manrope text-sm rounded-full px-4 py-1 hover:bg-[#A82531] hover:text-[#FAF4E1] transition-all",
+    button: "border border-[#A82531] text-[#A82531] font-manrope text-xs sm:text-sm rounded-full px-3 py-1 sm:px-4 sm:py-1 hover:bg-[#A82531] hover:text-[#FAF4E1] transition-all",
   },
 }
 
 const roccos2Styles = {
   classic: {
-    container: "bg-transperent rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-2", 
-    title: "font-outfit text-xl text-[#E55925]", 
+    container: "bg-transperent rounded-xl p-2 sm:p-4 md:p-6 text-center transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2", 
+    title: "font-outfit text-lg sm:text-xl text-[#E55925]", 
     description: "text-gray-600 font-outfit",
-    price: "font-outfit text-xl font-bold text-[#E55925]",
-    originalPrice: "font-outfit text-gray-500 line-through text-sm",
-    discount: "bg-[#E55925] text-white text-xs font-outfit px-2 py-1 rounded-full",
+    price: "font-outfit text-lg sm:text-xl font-bold text-[#E55925]",
+    originalPrice: "font-outfit text-gray-500 line-through text-xs sm:text-sm",
+    discount: "bg-[#E55925] text-white text-xs font-outfit px-1 py-0.5 sm:px-2 sm:py-1 rounded-full",
     promoTag: "bg-yellow-400 text-[#E55925] font-outfit font-bold",
-    button: "border border-[#E55925] text-[#E55925] font-outfit text-sm rounded-full px-4 py-1 hover:bg-[#E55925] hover:text-white transition-all",
+    button: "border border-[#E55925] text-[#E55925] font-outfit text-xs sm:text-sm rounded-full px-3 py-1 sm:px-4 sm:py-1 hover:bg-[#E55925] hover:text-white transition-all",
   },
   modern: {
-    container: "bg-transperent rounded-xl p-6 text-center transition-all duration-300 hover:-translate-y-2",
-    title: "font-manrope text-xl font-bold text-gray-800",
+    container: "bg-transperent rounded-xl p-2 sm:p-4 md:p-6 text-center transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2",
+    title: "font-manrope text-lg sm:text-xl font-bold text-gray-800",
     description: "text-gray-500 font-manrope",
-    price: "font-manrope text-xl font-bold text-gray-800",
-    originalPrice: "font-manrope text-gray-400 line-through text-sm",
-    discount: "bg-yellow-400 text-gray-800 text-xs font-manrope px-2 py-1 rounded-full",
+    price: "font-manrope text-lg sm:text-xl font-bold text-gray-800",
+    originalPrice: "font-manrope text-gray-400 line-through text-xs sm:text-sm",
+    discount: "bg-yellow-400 text-gray-800 text-xs font-manrope px-1 py-0.5 sm:px-2 sm:py-1 rounded-full",
     promoTag: "bg-yellow-400 text-gray-800 font-manrope font-bold",
-    button: "border border-[#E55925] text-[#E55925] font-manrope text-sm rounded-full px-4 py-1 hover:bg-[#E55925] hover:text-white transition-all",
+    button: "border border-[#E55925] text-[#E55925] font-manrope text-xs sm:text-sm rounded-full px-3 py-1 sm:px-4 sm:py-1 hover:bg-[#E55925] hover:text-white transition-all",
   },
 }
 
@@ -90,8 +90,8 @@ export default function ProductCard({ product, variant, hideAddButton = false }:
     >
       {/* Etiqueta de promo */}
       {isPromo && (
-        <div className="absolute top-2 right-2 z-10">
-          <div className={`${styles.promoTag} rounded-full px-3 py-1 flex items-center text-xs`}>
+        <div className="absolute top-1 sm:top-2 right-1 sm:right-2 z-10">
+          <div className={`${styles.promoTag} rounded-full px-2 py-0.5 sm:px-3 sm:py-1 flex items-center text-xs`}>
             <Sparkles className="w-3 h-3 mr-1" />
             PROMO
           </div>
@@ -100,16 +100,16 @@ export default function ProductCard({ product, variant, hideAddButton = false }:
       
       {/* Badge de descuento */}
       {discountPercentage && (
-        <div className="absolute top-4 left-4 z-10">
+        <div className="absolute top-2 sm:top-4 left-2 sm:left-4 z-10">
           <div className={`${styles.discount} shadow-md flex items-center`}>
-            <Tag className="w-3 h-3 mr-1" />
+            <Tag className="w-2 h-2 sm:w-3 sm:h-3 mr-0.5 sm:mr-1" />
             {discountPercentage}% OFF
           </div>
         </div>
       )}
       
-      {/* Imagen del producto */}
-      <div className="relative w-40 h-40 mx-auto mb-4">
+      {/* Imagen del producto - Responsive sizing */}
+      <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto mb-2 sm:mb-4">
         <Image
           src={product.image || "/placeholder.svg"}
           alt={product.name}
@@ -119,18 +119,18 @@ export default function ProductCard({ product, variant, hideAddButton = false }:
       </div>
 
       {/* Nombre del producto */}
-      <h3 className={`${styles.title} text-xl font-extrabold font-outfit mb-1`}>
+      <h3 className={`${styles.title} text-base sm:text-lg md:text-xl font-extrabold font-outfit mb-0.5 sm:mb-1 line-clamp-2`}>
         {product.name}
       </h3>
 
-      {/* Descripción */}
-      <p className={`${styles.description} text-sm italic font-outfit mb-4`}>
+      {/* Descripción - Hide on very small screens, limit to 2 lines on mobile */}
+      <p className={`${styles.description} text-xs sm:text-sm italic font-outfit mb-2 sm:mb-4 line-clamp-2 sm:line-clamp-3`}>
         {product.description}
       </p>
 
       {/* Precio y botón */}
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex items-center gap-2 justify-center">
+      <div className="flex flex-col items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 justify-center">
           <span className={styles.price}>
             ${product.price.toLocaleString()}
           </span>
@@ -143,7 +143,7 @@ export default function ProductCard({ product, variant, hideAddButton = false }:
         </div>
         
         {product.promoDetails && (
-          <p className="text-xs text-green-600 font-outfit">{product.promoDetails}</p>
+          <p className="text-xs text-green-600 font-outfit hidden sm:block">{product.promoDetails}</p>
         )}
         
         {!hideAddButton && (
@@ -153,7 +153,7 @@ export default function ProductCard({ product, variant, hideAddButton = false }:
             onClick={() => addToCart(product)}
             className={styles.button}
           >
-            Añadir al pedido
+            Añadir
           </motion.button>
         )}
       </div>

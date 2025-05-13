@@ -10,7 +10,7 @@ interface NotificationProps {
   type: NotificationType
   message: string
   visible: boolean
-  onClose: () => void
+  onCloseAction: () => void
   autoHideDuration?: number
 }
 
@@ -18,7 +18,7 @@ export default function Notification({
   type = "info",
   message,
   visible,
-  onClose,
+  onCloseAction,
   autoHideDuration = 3000,
 }: NotificationProps) {
   useEffect(() => {
@@ -26,14 +26,14 @@ export default function Notification({
 
     if (visible && autoHideDuration) {
       timeoutId = setTimeout(() => {
-        onClose()
+        onCloseAction()
       }, autoHideDuration)
     }
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId)
     }
-  }, [visible, autoHideDuration, onClose])
+  }, [visible, autoHideDuration, onCloseAction])
 
   const getIcon = () => {
     switch (type) {
@@ -69,7 +69,7 @@ export default function Notification({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.3 }}
-          className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 max-w-sm w-full"
+          className="fixed bottom-24 left-1/4 transform -translate-x-1/2 z-999 max-w-sm w-full"
         >
           <div
             className={`rounded-lg shadow-lg border px-4 py-3 ${getBackgroundColor()} font-outfit flex items-center justify-between`}
@@ -79,7 +79,7 @@ export default function Notification({
               <p className="text-gray-700">{message}</p>
             </div>
             <button
-              onClick={onClose}
+              onClick={onCloseAction}
               className="text-gray-500 hover:text-gray-700 focus:outline-none"
               aria-label="Cerrar notificación"
             >
@@ -130,7 +130,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
         visible={notificationState.visible}
         type={notificationState.type}
         message={notificationState.message}
-        onClose={hideNotification}
+        onCloseAction={hideNotification}
         autoHideDuration={notificationState.duration}
       />
     </NotificationContext.Provider>

@@ -1,21 +1,15 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import MenuTabs from "@/components/menu-tabs"
 import WhatsAppForm from "@/components/whatsapp-form"
-import { classicCategories } from "@/data/categories"
-import { products } from "@/data/products"
+import { useProducts } from "@/lib/context/ProductContext"
 
 export default function RoccosPedido() {
-  const [loaded, setLoaded] = useState(false)
+  const { products, loading: productsLoading, error: productsError } = useProducts()
 
   // Filtrar productos por sucursal
-  const roccosProducts = products.filter((product) => product.sucursal === "roccos")
-
-  useEffect(() => {
-    setLoaded(true)
-  }, [])
+  const roccosProducts = products.filter((p) => p.sucursal === "roccos")
 
   const containerVariants = {
     hidden: { opacity: 0 },
