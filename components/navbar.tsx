@@ -108,13 +108,6 @@ export default function Navbar({ variant, currentPath }: NavbarProps) {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-4">
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-opacity-20 hover:bg-black dark:hover:bg-white dark:hover:bg-opacity-20 transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
-            </button>
-            <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
             >

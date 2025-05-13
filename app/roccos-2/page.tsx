@@ -7,7 +7,6 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Clock, MapPin, Phone, Coffee, Heart, ChevronLeft, ChevronRight, FileText } from "lucide-react"
 import { getRestaurantById } from "@/data/restaurants"
 import { useProducts } from "@/lib/context/ProductContext"
-import ProductCard from "@/components/product-card"
 
 export default function Roccos2Home() {
   const [loaded, setLoaded] = useState(false)
@@ -16,7 +15,6 @@ export default function Roccos2Home() {
   const heroRef = useRef<HTMLDivElement>(null)
   const { products, loading: productsLoading, error: productsError } = useProducts()
 
-  const roccos2Products = products.filter((p) => p.sucursal === "roccos-2" && p.star)
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -242,44 +240,60 @@ export default function Roccos2Home() {
           ></motion.div>
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
-            {products
-              .filter(product => product.star && product.sucursal === "roccos-2")
-              .map((product, idx) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: idx * 0.15 }}
-                  className="text-center group"
+            {productsLoading ? (
+              <div className="h-full flex items-center justify-center">
+                <div className="animate-spin rounded-full border-b-2 border-white h-5 w-5"></div>
+              </div>
+            ) : productsError ? (
+              <div className="text-center text-2xl text-white font-manrope">
+                <p>Error cargando productos</p>
+                <button
+                  className="mt-4 px-4 py-2 bg-[#E55925] rounded-full text-white font-manrope"
+                  onClick={() => window.location.reload()}
                 >
-                  <div className="relative h-64 w-full flex justify-center items-center">
-                    <motion.img
-                      src={product.image}
-                      alt={product.name}
-                      className="h-64 object-contain drop-shadow-xl transition-all duration-300"
-                      whileHover={{
-                        scale: 1.08,
-                        filter: "drop-shadow(0px 3px 20px rgba(230,193,99,0.8))"
-                      }}
-                    />
-                  </div>
-
-                  <h3 className="mt-4 text-2xl font-extrabold font-manrope text-[#E55925]">
-                    {product.name}
-                  </h3>
-                  <p className="text-md text-white font-manrope mt-2 mb-3 px-2">{product.description}</p>
-
+                  Intentar de nuevo
+                </button>
+              </div>
+            ) : (
+              products
+                .filter(product => product.star && product.sucursal === "roccos-2")
+                .map((product, idx) => (
                   <motion.div
-                    className="text-3xl text-white font-extrabold font-manrope"
-                    initial={{ scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    key={product.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: idx * 0.15 }}
+                    className="text-center group"
                   >
-                    ${product.price}
+                    <div className="relative h-64 w-full flex justify-center items-center">
+                      <motion.img
+                        src={product.image}
+                        alt={product.name}
+                        className="h-64 object-contain drop-shadow-xl transition-all duration-300"
+                        whileHover={{
+                          scale: 1.08,
+                          filter: "drop-shadow(0px 3px 20px rgba(230,193,99,0.8))"
+                        }}
+                      />
+                    </div>
+
+                    <h3 className="mt-4 text-2xl font-extrabold font-manrope text-[#E55925]">
+                      {product.name}
+                    </h3>
+                    <p className="text-md text-white font-manrope mt-2 mb-3 px-2">{product.description}</p>
+
+                    <motion.div
+                      className="text-3xl text-white font-extrabold font-manrope"
+                      initial={{ scale: 1 }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      ${product.price}
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              ))}
+                ))
+            )}
           </div>
         </div>
       </section>
@@ -450,8 +464,8 @@ export default function Roccos2Home() {
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeImage
-                        ? 'bg-white scale-125 shadow-[0_0_10px_rgba(255,255,255,0.5)]'
-                        : 'bg-white/50 hover:bg-white/80'
+                      ? 'bg-white scale-125 shadow-[0_0_10px_rgba(255,255,255,0.5)]'
+                      : 'bg-white/50 hover:bg-white/80'
                       }`}
                     onClick={() => setActiveImage(index)}
                     aria-label={`Ir a imagen ${index + 1}`}
@@ -640,9 +654,9 @@ export default function Roccos2Home() {
               <div className="flex flex-col space-y-4 mb-10 text-[#0C2232]">
                 <div className="flex items-center">
                   <MapPin className="w-6 h-6 mr-3 text-[#E55925]" />
-                  <a 
-                    href="https://maps.google.com/?q=Brandsen+39,+Dolores,+Buenos+Aires" 
-                    target="_blank" 
+                  <a
+                    href="https://maps.google.com/?q=Brandsen+39,+Dolores,+Buenos+Aires"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="font-manrope hover:text-[#E55925] transition-colors duration-300"
                   >

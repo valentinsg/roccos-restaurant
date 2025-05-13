@@ -47,9 +47,9 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
       container: "bg-white w-full border border-gray-200 rounded-lg shadow-md",
       title: "font-outfit text-2xl text-[#7B2D26]",
       label: "font-outfit text-gray-700",
-      input: "border-gray-300 focus:border-[#7B2D26] focus:ring-[#7B2D26] font-outfit",
+      input: "border-gray-300 focus:border-[#7B2D26] border-1 focus:ring-[#7B2D26] font-outfit",
       button: "bg-[#7B2D26] text-[#FAF4E1] hover:bg-[#5a201c] font-outfit",
-      radio: "text-[#7B2D26] focus:ring-[#7B2D26]",
+      radio: "text-[#7B2D26] focus:ring-[#7B2D26] ",
     },
     modern: {
       container: "bg-white rounded-xl shadow-sm",
@@ -143,7 +143,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             value={formData.name}
             onChange={handleChange}
             required
-            className={`w-full rounded-md font-outfit text-[#A82531] border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+            className={`w-full rounded-md font-outfit text-[#A82531] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
             placeholder="Tu nombre"
           />
         </div>
@@ -159,7 +159,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             value={formData.phone}
             onChange={handleChange}
             required
-            className={`w-full rounded-md font-outfit text-[#A82531] border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+            className={`w-full rounded-md font-outfit text-[#A82531] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
             placeholder="Tu número de teléfono"
           />
         </div>
@@ -171,7 +171,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             name="pickup"
             checked={formData.pickup}
             onChange={handleChange}
-            className={`${styles.radio} mr-2`}
+            className={`${styles.radio} mr-2 border-1 border-[#A82531]`}
           />
           <label htmlFor="pickup" className={"font-outfit text-[#111111]"}>
             Retiro en local
@@ -190,7 +190,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
               value={formData.address}
               onChange={handleChange}
               required={!formData.pickup}
-              className={`w-full rounded-md font-outfit text-[#A82531] border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+              className={`w-full rounded-md font-outfit text-[#A82531] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
               placeholder="Tu dirección completa"
             />
           </div>
@@ -206,7 +206,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             value={formData.paymentMethod}
             onChange={handleChange}
             required
-            className={`w-full rounded-md font-outfit text-[#111111] border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+            className={`w-full rounded-md font-outfit text-[#111111] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
           >
             <option value="efectivo">Efectivo</option>
             <option value="transferencia">Transferencia</option>
@@ -224,7 +224,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             value={formData.notes}
             onChange={handleChange}
             rows={3}
-            className={`w-full rounded-md font-outfit text-[#A82531] border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+            className={`w-full rounded-md font-outfit text-[#A82531] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
             placeholder="Instrucciones especiales, alergias, etc."
           />
         </div>

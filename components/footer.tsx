@@ -12,7 +12,7 @@ export default function Footer({ variant }: FooterProps) {
 
   const footerClasses = {
     classic: {
-      container: "bg-[#111111] text-[#E6C163]",
+      container: "bg-[#111111] text-[#E6C163] ",
       title: "font-outfit text-2xl font-bold tracking-wide mb-3",
       link: "text-[#E6C163] hover:text-[#FAF4E1] transition-colors",
       icon: "text-[#E6C163] hover:text-[#FAF4E1] transition-colors",
@@ -59,7 +59,7 @@ export default function Footer({ variant }: FooterProps) {
   const fontFamily = "font-outfit"
 
   return (
-    <footer className={`${styles.container} py-12`}>
+    <footer className={`${styles.container} py-12 `}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Logo y descripción */}

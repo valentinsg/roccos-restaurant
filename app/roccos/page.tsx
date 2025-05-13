@@ -4,20 +4,23 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { ArrowRight, Clock, MapPin, Phone, Star, FileText,  } from "lucide-react"
+import { ArrowRight, Clock, MapPin, Phone, Star, FileText } from "lucide-react"
 import { getRestaurantById } from "@/data/restaurants"
 import RoccosCard from "@/app/components/roccos-card"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from "swiper/modules"
 import "swiper/css"
 import HistorySection from "../components/HistorySection"
-
+import { useProducts } from "@/lib/context/ProductContext"
+import { useCart } from "@/hooks/use-cart"
 
 export default function RoccosHome() {
   const [loaded, setLoaded] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const restaurant = getRestaurantById("roccos")
   const heroRef = useRef<HTMLDivElement>(null)
+  const { products, loading: productsLoading, error: productsError } = useProducts()
+  const { addToCart } = useCart()
 
   // Configuración personalizada para cada imagen
   const backgroundImages = [
@@ -107,26 +110,6 @@ export default function RoccosHome() {
     },
   ]
 
-  const featuredDishes = [
-    {
-      name: "Sorrentinos con Salsa Blanca",
-      description: "Sorrentinos con salsa blanca, con diferentes rellenos.",
-      price: "5.800",
-      image: "/images/sorrentinos-con-salsa-blanca.webp",
-    },
-    {
-      name: "Pizza Rocco's",
-      description: "Muzzarella, panceta crocante, morrón asado y salsa de la casa.",
-      price: "12.000",
-      image: "/images/pizza-roccos.webp",
-    },
-    {
-      name: "Tabla de Mariscos",
-      description: "Tabla de mariscos con diferentes tipos de pescados.",
-      price: "11.900",
-      image: "/images/mariscos-roccos.webp",
-    },
-  ];
   interface PlatoDelDia {
     name: string;
     descripcion: string;
@@ -142,9 +125,9 @@ export default function RoccosHome() {
   };
 
   return (
-    <div className="bg-[#FAF4E1]  min-h-screen">
+    <div className="bg-[#FAF4E1] min-h-screen">
       {/* Hero Section with Diagonal */}
-      <section ref={heroRef} className="relative h-screen min-h-[600px] overflow-hidden">
+      <section ref={heroRef} className="relative h-screen overflow-hidden">
         {/* Background Base */}
         <div className="absolute inset-0 bg-[#111111]">
           <AnimatePresence mode="wait">
@@ -188,11 +171,7 @@ export default function RoccosHome() {
           initial={{ opacity: 0, x: -50 }}
           animate={loaded ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
-          className="absolute bottom-[16%] right-[8%] z-20 h-[75vh] aspect-[3/4]"
-          style={{
-            maxHeight: '600px',
-            minHeight: '350px'
-          }}
+          className="absolute bottom-[16%] right-[8%] z-20 h-[40vh] md:h-[50vh] aspect-[3/4] max-h-[600px] min-h-[250px]"
         >
           <Image
             src="/images/character-roccos.webp"
@@ -204,14 +183,14 @@ export default function RoccosHome() {
         </motion.div>
 
         {/* Content */}
-        <div className="relative z-30 mt-16 flex flex-col items-center justify-center ">
+        <div className="relative z-30 pt-12 sm:pt-16 md:mt-6 flex flex-col items-center justify-center">
           <div className="w-full px-4 sm:px-4 md:px-12 lg:px-16 ml-[5%] sm:ml-[10%] md:ml-[15%]">
-            <div className="max-w-3xl">
+            <div className="max-w-xl">
               <motion.div
                 initial={{ opacity: 0, y: -30 }}
                 animate={loaded ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                className="w-28 h-28 sm:w-36 sm:h-36 md:w-48 md:h-48 relative sm:mb-4"
+                className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-48 lg:h-48 relative mb-2 sm:mb-4"
               >
                 <Image
                   src="/images/roccos-logo-sin-letras.webp"
@@ -225,7 +204,7 @@ export default function RoccosHome() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={loaded ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                className="font-outfit font-bold text-shadow-lg font-bold text-3xl sm:text-4xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 text-[#E6C163] drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]"
+                className="font-outfit font-bold text-shadow-lg text-xl xs:text-2xl sm:text-3xl md:text-5xl lg:text-6xl mb-2 sm:mb-4 md:mb-6 text-[#E6C163] drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]"
               >
                 Rocco&apos;s Pizza <br className="hidden sm:block" /> and Restaurante
               </motion.h1>
@@ -233,38 +212,38 @@ export default function RoccosHome() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={loaded ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                className="font-outfit text-base sm:text-lg md:text-xl lg:text-2xl mb-8 text-[#FAF4E1] drop-shadow-lg "
+                className="font-outfit text-sm xs:text-base sm:text-lg md:text-xl mb-4 sm:mb-6 md:mb-8 text-[#FAF4E1] drop-shadow-lg"
               >
-                Una experiencia gastronómica que conecta familia, sabor y momentos en un ambiente cálido. <br />
+                Una experiencia gastronómica que conecta familia, sabor y momentos en un ambiente cálido. <br className="hidden xs:block" />
                 Las mejores pizzas de Dolores, buena parrilla y smashed burgers.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={loaded ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                className="flex flex-col sm:flex-row gap-6"
+                className="flex flex-col xs:flex-row gap-3 sm:gap-6"
               >
-                <Link href="/roccos/nosotros" className="group w-full sm:w-auto">
+                <Link href="/roccos/nosotros" className="group w-full xs:w-auto">
                   <motion.button
                     whileHover={{ scale: 1.02, boxShadow: "0 8px 30px rgba(168,37,49,0.4)" }}
                     whileTap={{ scale: 0.98 }}
-                    className="relative w-full bg-[#A82531] text-[#E6C163] font-outfit text-lg sm:text-xl py-4 px-8 rounded-xl flex items-center justify-center overflow-hidden group-hover:shadow-[0_8px_30px_rgba(168,37,49,0.4)] transition-all duration-300"
+                    className="relative w-full bg-[#A82531] text-[#E6C163] font-outfit text-sm xs:text-base sm:text-lg md:text-xl py-2 xs:py-3 sm:py-4 px-4 sm:px-6 md:px-8 rounded-xl flex items-center justify-center overflow-hidden group-hover:shadow-[0_8px_30px_rgba(168,37,49,0.4)] transition-all duration-300"
                   >
                     <span className="relative z-10 flex items-center">
-                      Conocé nuestra historia <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-2" />
+                      Conocé nuestra historia <ArrowRight className="ml-2 xs:ml-3 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-2" />
                     </span>
                     <div className="absolute inset-0 bg-[#E6C163] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                     <span className="absolute inset-0 bg-gradient-to-r from-[#A82531] to-[#8a1e28] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.button>
                 </Link>
-                <Link href="/roccos/pedido" className="group w-full sm:w-auto">
+                <Link href="/roccos/pedido" className="group w-full xs:w-auto">
                   <motion.button
                     whileHover={{ scale: 1.02, boxShadow: "0 8px 30px rgba(230,193,99,0.3)" }}
                     whileTap={{ scale: 0.98 }}
-                    className="relative w-full border-2 border-[#E6C163] text-[#E6C163] font-outfit text-lg sm:text-xl py-4 px-8 rounded-xl flex items-center justify-center overflow-hidden group-hover:shadow-[0_8px_30px_rgba(230,193,99,0.3)] transition-all duration-300"
+                    className="relative w-full border-2 border-[#E6C163] text-[#E6C163] font-outfit text-sm xs:text-base sm:text-lg md:text-xl py-2 xs:py-3 sm:py-4 px-4 sm:px-6 md:px-8 rounded-xl flex items-center justify-center overflow-hidden group-hover:shadow-[0_8px_30px_rgba(230,193,99,0.3)] transition-all duration-300"
                   >
                     <span className="relative z-10 flex items-center">
-                      Hacer Pedido <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-2" />
+                      Hacer Pedido <ArrowRight className="ml-2 xs:ml-3 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-2" />
                     </span>
                     <div className="absolute inset-0 bg-[#E6C163] transform origin-right scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                   </motion.button>
@@ -276,14 +255,14 @@ export default function RoccosHome() {
       </section>
 
       {/* Platos estrella */}
-      <section className="py-32 px-4">
-        <div className="max-w-6xl mx-auto text-center mb-20">
+      <section className="py-16 sm:py-20 md:py-28 lg:py-32 px-4">
+        <div className="max-w-6xl mx-auto text-center mb-10 sm:mb-16 md:mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-6xl font-outfit font-extrabold text-[#A82531] mb-2"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-outfit font-extrabold text-[#A82531] mb-2"
           >
             Nuestros Platos Estrella
           </motion.h2>
@@ -292,54 +271,73 @@ export default function RoccosHome() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[#5E4B42] text-xl font-outfit italic"
+            className="text-[#5E4B42] text-sm xs:text-base sm:text-lg md:text-xl font-outfit italic"
           >
             Clásicos irresistibles que definen el sabor de Rocco's.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
-          {featuredDishes.map((dish, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="text-center group"
-            >
-              <div className="relative h-64 w-full flex justify-center items-center">
-                <img
-                  src={dish.image}
-                  alt={dish.name}
-                  className="h-64 object-contain drop-shadow-xl group-hover:scale-105 group-hover:drop-shadow-[0px_3px_20px_rgba(230,193,99,0.8)] transition-all duration-300"
-                />
-              </div>
-
-              <h3 className="mt-4 text-2xl font-bold font-outfit text-[#A82531]">
-                {dish.name}
-              </h3>
-              <p className="text-sm text-gray-600 font-outfit mt-2 mb-3 px-2">{dish.description}</p>
-
-              {/* Precio destacado arriba */}
-              <div className="text-2xl text-[#A82531] font-extrabold font-outfit">
-                ${dish.price}
-              </div>
-              <button className="mt-2 px-4 py-2 rounded-full text-[#A82531] border-2 border-[#A82531] font-outfit hover:bg-[#A82531] hover:text-white transition-colors duration-300">
-                Añadir al pedido
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+          {productsLoading ? (
+            <div className="h-full flex items-center justify-center">
+              <div className="animate-spin rounded-full border-b-2 border-white h-5 w-5"></div>
+            </div>
+          ) : productsError ? (
+            <div className="text-center text-2xl text-white font-manrope">
+              <p>Error cargando productos</p>
+              <button
+                className="mt-4 px-4 py-2 bg-[#E55925] rounded-full text-white font-manrope"
+                onClick={() => window.location.reload()}
+              >
+                Intentar de nuevo
               </button>
-            </motion.div>
-          ))}
+            </div>
+          ) : (
+            products
+              .filter((product) => product.star && product.sucursal === "roccos")
+              .map((product, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  className="text-center group"
+                >
+
+                  <div className="relative h-48 sm:h-56 md:h-64 w-full flex justify-center items-center">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="h-48 sm:h-56 md:h-64 object-contain drop-shadow-xl group-hover:scale-105 group-hover:drop-shadow-[0px_3px_20px_rgba(230,193,99,0.8)] transition-all duration-300"
+                    />
+                  </div>
+
+                  <h3 className="mt-3 md:mt-4 text-xl sm:text-2xl font-bold font-outfit text-[#A82531]">
+                    {product.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-outfit mt-1 sm:mt-2 mb-2 sm:mb-3 px-2">{product.description}</p>
+
+                  {/* Precio destacado arriba */}
+                  <div className="text-xl sm:text-2xl text-[#A82531] font-extrabold font-outfit">
+                    ${product.price}
+                  </div>
+                  <button onClick={() => addToCart(product)} className="mt-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[#A82531] border-2 border-[#A82531] font-outfit text-sm sm:text-base hover:bg-[#A82531] hover:text-white transition-colors duration-300">
+                    Añadir al pedido
+                  </button>
+                </motion.div>
+              ))
+          )}
         </div>
       </section>
 
       {/* Categorías */}
-      <section className="py-12 w-full text-center">
+      <section className="py-8 sm:py-10 md:py-12 w-full text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={loaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="text-4xl font-outfit font-extrabold text-[#A82531]"
+          className="text-2xl sm:text-3xl md:text-4xl font-outfit font-extrabold text-[#A82531]"
         >
           ¿Qué ofrecemos?
         </motion.h2>
@@ -348,7 +346,7 @@ export default function RoccosHome() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="w-full mt-8 shadow-lg py-6 bg-[#8A1D27] shadow-black/40 shadow-xl"
+          className="w-full mt-4 sm:mt-6 md:mt-8 shadow-lg py-4 sm:py-6 bg-[#8A1D27] shadow-black/40 shadow-xl"
         >
           <Swiper
             modules={[Autoplay]}
@@ -365,20 +363,24 @@ export default function RoccosHome() {
             grabCursor={true}
             breakpoints={{
               320: {
-                slidesPerView: 2,
+                slidesPerView: 2.5,
+                spaceBetween: 8
+              },
+              480: {
+                slidesPerView: 3,
                 spaceBetween: 10
               },
               640: {
-                slidesPerView: 3,
-                spaceBetween: 20
+                slidesPerView: 3.5,
+                spaceBetween: 15
               },
               768: {
                 slidesPerView: 4,
-                spaceBetween: 30
+                spaceBetween: 20
               },
               1024: {
                 slidesPerView: 5,
-                spaceBetween: 40
+                spaceBetween: 30
               }
             }}
           >
@@ -400,20 +402,20 @@ export default function RoccosHome() {
             ].map((item, i) => (
               <SwiperSlide key={i} className="flex justify-center">
                 <motion.a
-                  href={`#menu-${item.name.toLowerCase()}`}
-                  className="w-[100px] bg-transparent transition-all duration-300 group flex flex-col items-center justify-center"
+                  href={`/roccos/pedidos`}
+                  className="w-[80px] sm:w-[100px] bg-transparent transition-all duration-300 group flex flex-col items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.img
                     src={item.image}
                     alt={item.name}
-                    className="w-24 h-24 object-contain mb-1 drop-shadow-sm"
+                    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain mb-1 drop-shadow-sm"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   />
                   <motion.span
-                    className="position absolute bottom-0 font-outfit font-bold text-[15px] text-[#FAF4E1] group-hover:text-[#E6C163] transition-colors duration-300 ease-in-out tracking-wide"
+                    className="position absolute bottom-0 font-outfit font-bold text-xs sm:text-sm md:text-base text-[#FAF4E1] group-hover:text-[#E6C163] transition-colors duration-300 ease-in-out tracking-wide"
                     whileHover={{ y: -2 }}
                   >
                     {item.name}
@@ -425,30 +427,29 @@ export default function RoccosHome() {
         </motion.div>
       </section>
 
-
       {/* Plato del día */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="pt-48 bg-[#FAF4E1]"
+        className="pt-16 sm:pt-24 md:pt-36 lg:pt-48 bg-[#FAF4E1]"
       >
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6 px-4">
           {/* Columna izquierda: HOY PLATO DEL DÍA */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full md:w-1/1 text-[#A82531] font-outfit font-extrabold leading-[1] text-left"
+            className="w-full md:w-1/1 text-[#A82531] font-outfit font-extrabold leading-[0.9] text-left"
           >
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="mb-2 text-9xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
+              className="mb-1 sm:mb-2 text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
             >
               ¡HOY!
             </motion.p>
@@ -457,7 +458,7 @@ export default function RoccosHome() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="mb-2 text-9xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
+              className="mb-1 sm:mb-2 text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
             >
               PLATO
             </motion.p>
@@ -466,7 +467,7 @@ export default function RoccosHome() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="text-9xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
+              className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
             >
               DEL DÍA
             </motion.p>
@@ -478,14 +479,14 @@ export default function RoccosHome() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-full bg-[transparent] p-4 md:p-4 gap-4 items-center"
+            className="w-full bg-[transparent] p-2 sm:p-4 gap-2 sm:gap-4 items-center"
           >
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="inline-block bg-[#A82531] text-[#FAF4E1] px-6 py-2 rounded-full font-outfit font-medium text-lg"
+              className="inline-block bg-[#A82531] text-[#FAF4E1] px-3 sm:px-4 md:px-6 py-1 sm:py-1.5 md:py-2 rounded-full font-outfit font-medium text-sm sm:text-base md:text-lg"
             >
               {platoDelDia.precio}
             </motion.span>
@@ -496,7 +497,7 @@ export default function RoccosHome() {
               transition={{ duration: 0.6, delay: 0.8 }}
               src={platoDelDia.imagen}
               alt={platoDelDia.name}
-              className="w-full md:w-1/2 h-64 object-covershadow-md"
+              className="w-full md:w-2/3 lg:w-1/2 h-40 sm:h-48 md:h-56 lg:h-64 object-cover shadow-md"
             />
 
             <motion.div
@@ -504,12 +505,12 @@ export default function RoccosHome() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 1 }}
-              className="mt-10 text-left"
+              className="mt-4 sm:mt-6 md:mt-10 text-left"
             >
-              <h3 className="text-6xl font-bold text-[#A82531] font-outfit mb-3">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#A82531] font-outfit mb-2 sm:mb-3">
                 {platoDelDia.name}
               </h3>
-              <p className="text-xl font-outfit font-medium leading-[1.3] text-[#5E4B42] leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl font-outfit font-medium leading-[1.3] text-[#5E4B42]">
                 {platoDelDia.descripcion}
               </p>
             </motion.div>
