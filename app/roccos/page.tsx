@@ -743,14 +743,14 @@ export default function RoccosHome() {
                       href="tel:+542245439331"
                       className="text-[#D4AF37] font-outfit text-lg font-medium hover:underline"
                     >
-                      (2245) 43-9331
+                      (2245) 401066
                     </a>
                   </div>
                 </div>
 
                 {/* Botón grande de WhatsApp */}
                 <a
-                  href="https://wa.me/542245439331?text=Hola,%20quiero%20reservar%20una%20mesa%20VIP%20en%20Rocco's"
+                  href="https://wa.me/542245401066?text=Hola,%20quiero%20reservar%20una%20mesa%20VIP%20en%20Rocco's"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full"

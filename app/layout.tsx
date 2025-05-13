@@ -17,6 +17,7 @@ import { CartProvider } from "@/hooks/use-cart"
 import { NotificationProvider } from "@/components/notification"
 import { ProductProvider } from '@/lib/context/ProductContext'
 import { CategoryProvider } from '@/lib/context/CategoryContext'
+import Seo from '@/components/Seo'
 
 // Fuentes para Rocco's clásico
 const playfair = Playfair_Display({
@@ -78,12 +79,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rocco's Restaurante - Dolores, Buenos Aires",
     description: "Tradición, parrilla y las mejores pizzas de Dolores",
-    url: "https://roccos.com.ar",
+    url: "https://www.roccosdolores.com",
     siteName: "Rocco's Restaurante",
     locale: "es_AR",
     type: "website",
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -93,6 +93,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <Seo
+        title="Roccos Restaurante - Dolores, Buenos Aires"
+        description="Rocco's Pizza and Restaurante y Rocco's 2.0 - Fast Food & Coffee en Dolores, Buenos Aires"
+        url="https://www.roccosdolores.com"
+        image="/public/images/roccos-logo.webp"
+        canonical="https://www.roccosdolores.com"
+      />
       <body
         suppressHydrationWarning
         className={`${inter.variable} ${poppins.variable} ${archiveBlack.variable} ${playfair.variable} ${dmSerif.variable} ${outfit.variable} ${manrope.variable} ${lora.variable} ${crimsonText.variable}`}
