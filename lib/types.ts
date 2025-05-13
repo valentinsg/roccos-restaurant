@@ -12,6 +12,7 @@ export interface Product {
   originalPrice?: number
   isAvailable?: boolean
   star?: boolean
+  dailySpecial?: boolean
 }
 
 export interface Category {

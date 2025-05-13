@@ -14,7 +14,8 @@ export async function getAllProducts() {
     isPromo,
     promoDetails,
     originalPrice,
-    star
+    star,
+    dailySpecial
   } | order(name asc)`
   try {
     return await sanity.fetch(query)

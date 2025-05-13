@@ -171,7 +171,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             name="pickup"
             checked={formData.pickup}
             onChange={handleChange}
-            className={`${styles.radio} mr-2 border-1 border-[#A82531]`}
+            className={`${styles.radio} mr-2 border-2 border-[#A82531]`}
           />
           <label htmlFor="pickup" className={"font-outfit text-[#111111]"}>
             Retiro en local

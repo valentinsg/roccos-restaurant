@@ -110,20 +110,6 @@ export default function RoccosHome() {
     },
   ]
 
-  interface PlatoDelDia {
-    name: string;
-    descripcion: string;
-    precio: string;
-    imagen: string;
-  }
-
-  const platoDelDia: PlatoDelDia = {
-    name: "Lasaña de la Nonna",
-    descripcion: "Capas de pasta fresca, carne estofada y mucho amor. Servida con pan de ajo artesanal y bebida incluida.",
-    precio: "$4.800",
-    imagen: "/images/platos/lasagna-dia.webp",
-  };
-
   return (
     <div className="bg-[#FAF4E1] min-h-screen">
       {/* Hero Section with Diagonal */}
@@ -481,43 +467,46 @@ export default function RoccosHome() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="w-full bg-[transparent] p-2 sm:p-4 gap-2 sm:gap-4 items-center"
           >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="inline-block bg-[#A82531] text-[#FAF4E1] px-3 sm:px-4 md:px-6 py-1 sm:py-1.5 md:py-2 rounded-full font-outfit font-medium text-sm sm:text-base md:text-lg"
-            >
-              {platoDelDia.precio}
-            </motion.span>
-            <motion.img
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              src={platoDelDia.imagen}
-              alt={platoDelDia.name}
-              className="w-full md:w-2/3 lg:w-1/2 h-40 sm:h-48 md:h-56 lg:h-64 object-cover shadow-md"
-            />
+            {
+              products
+                .filter((product) => product.dailySpecial === true && product.sucursal === "roccos")
+                .map((product, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                >
+                  <motion.img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full md:w-2/3 lg:w-1/2 h-40 sm:h-48 md:h-56 lg:h-64 object-cover shadow-md"
+                  />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 1 }}
-              className="mt-4 sm:mt-6 md:mt-10 text-left"
-            >
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#A82531] font-outfit mb-2 sm:mb-3">
-                {platoDelDia.name}
-              </h3>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl font-outfit font-medium leading-[1.3] text-[#5E4B42]">
-                {platoDelDia.descripcion}
-              </p>
-            </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1 }}
+                    className="mt-4 sm:mt-6 md:mt-10 text-left"
+                  >
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#A82531] font-outfit mb-2 sm:mb-3">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl font-outfit font-medium leading-[1.3] text-[#5E4B42]">
+                      {product.description}
+                    </p>
+                    <p className="text-lg sm:text-base md:text-3xl font-extrabold lg:text-4xl font-outfit font-medium leading-[1.3] text-[#A82531]">
+                      {product.price}
+                    </p>
+                  </motion.div>
+                </motion.div>
+              ))
+            }
           </motion.div>
         </div>
-      </motion.section>
-
+      </motion.section>          
       {/* Nota inferior */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
