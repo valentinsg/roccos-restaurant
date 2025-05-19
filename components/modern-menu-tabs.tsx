@@ -18,47 +18,35 @@ export default function ModernMenuTabs({ products, hideAddButton = false }: Mode
   const filteredProducts = products.filter((product) => product.category === activeCategory)
 
   return (
-    <div className="bg-white w-full flex flex-col items-center">
-      {/* Container con ancho máximo para centrar todo el contenido */}
-      <div className="mx-auto">
+    <div className="w-full">
+      <div className="max-w-7xl mx-auto">
         {/* Category Tabs */}
-        <div className="w-full flex justify-center pt-4 pb-2 px-4">
-          <div className="bg-gray-100 shadow-sm rounded-full py-2 px-2 flex overflow-x-auto max-w-6xl mx-auto justify-center">
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                className={`px-4 py-2 m-1 whitespace-nowrap rounded-full text-sm font-medium transition-all duration-200 ${
-                  activeCategory === category 
-                    ? "font-outfit text-white bg-[#E55925] shadow-md" 
-                    : "font-outfit text-[#0C2232] hover:text-[#E55925]"
-                }`}
-                onClick={() => setActiveCategory(category)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </motion.button>
-            ))}
+        <div className="w-full flex justify-center pt-2 sm:pt-4 pb-2 px-2 sm:px-4">
+          <div className="relative w-full max-w-6xl">
+            <div className="overflow-x-auto pb-2 -mx-2 sm:mx-0 scrollbar-hide">
+              <div className="inline-flex space-x-1 px-1 bg-gray-100 rounded-full py-1.5 min-w-max">
+                {categories.map((category) => (
+                  <motion.button
+                    key={category}
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 whitespace-nowrap rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
+                      activeCategory === category 
+                        ? "font-outfit text-white bg-[#E55925] shadow-md" 
+                        : "font-outfit text-[#0C2232] hover:text-[#E55925] hover:bg-gray-200"
+                    }`}
+                    onClick={() => setActiveCategory(category)}
+                    whileHover={{ scale: activeCategory === category ? 1 : 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Descripción de la categoría */}
-        <div className="text-center py-3">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={activeCategory}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              className="text-[#0C2232] font-outfit italic"
-            >
-              {products.find(product => product.category === activeCategory)?.description || ''}
-            </motion.p>
-          </AnimatePresence>
-        </div>
-
-        {/* Products Grid - Centrado */}
-        <div className="w-full px-4 py-8">
+        {/* Products Grid */}
+        <div className="w-full px-2 sm:px-4 py-4 sm:py-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -66,7 +54,7 @@ export default function ModernMenuTabs({ products, hideAddButton = false }: Mode
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center"
+              className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-items-center"
             >
               {filteredProducts.map((product) => (
                 <motion.div
@@ -98,13 +86,13 @@ export default function ModernMenuTabs({ products, hideAddButton = false }: Mode
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-16 px-4"
+              className="text-center py-12 sm:py-16 px-4 w-full"
             >
               <div className="max-w-sm mx-auto">
-                <p className="text-[#0C2232] font-outfit mb-4">No hay productos en esta categoría.</p>
+                <p className="text-[#0C2232] font-outfit mb-4 text-sm sm:text-base">No hay productos en esta categoría.</p>
                 <button 
                   onClick={() => setActiveCategory(categories[0] || '')}
-                  className="font-outfit text-[#0C2232] hover:text-[#E55925] px-4 py-2 rounded-full border border-current"
+                  className="font-outfit text-[#0C2232] hover:text-[#E55925] px-4 py-2 text-sm sm:text-base rounded-full border border-current transition-colors hover:border-[#E55925]"
                 >
                   Ver {categories[0] || 'otros productos'}
                 </button>
@@ -115,4 +103,4 @@ export default function ModernMenuTabs({ products, hideAddButton = false }: Mode
       </div>
     </div>
   )
-} 
+}

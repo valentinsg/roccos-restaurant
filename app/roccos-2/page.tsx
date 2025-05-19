@@ -179,8 +179,8 @@ export default function Roccos2Home() {
             className="absolute bottom-24 right-6 md:right-12 z-0 w-[100px] h-[150px] md:w-[140px] md:h-[180px]"
           >
             <Image
-              src="/images/brandsen-39-sign.webp"
-              alt="Brandsen 39 Sign"
+              src="/images/mitre-39.webp"
+              alt="Mitre 39 Sign"
               width={140}
               height={180}
               className="w-full h-full object-contain drop-shadow-[0_5px_24px_rgba(0,0,0,0.7)]"
