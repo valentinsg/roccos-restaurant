@@ -61,7 +61,7 @@ export default function Roccos2Home() {
   return (
     <div className="bg-roccos-secondary min-h-screen">
       {/* Hero Section - Starbucks Style */}
-      <section ref={heroRef} className="relative h-[90vh] overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen md:h-[90vh] justify-center overflow-hidden">
         {/* Background con textura mejorada */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[#0C2232]">
@@ -91,7 +91,7 @@ export default function Roccos2Home() {
               initial={{ opacity: 0, y: -30 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-8 bg-[#151515] w-72 h-72 relative mx-auto drop-shadow-[0_0_20px_rgba(0,0,0,0.6)] rounded-full border-2 border-white/90 shadow-[0_0_15px_rgba(0,0,0,0.7)]"
+              className="mb-6 md:mb-8 bg-[#151515] w-48 h-48 md:w-72 md:h-72 relative mx-auto drop-shadow-[0_0_20px_rgba(0,0,0,0.6)] rounded-full border-2 border-white/90 shadow-[0_0_15px_rgba(0,0,0,0.7)]"
             >
               <Image
                 src="/images/roccos-2.0-logo.webp"
@@ -107,7 +107,7 @@ export default function Roccos2Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="text-3xl md:text-7xl font-manrope font-extrabold mb-4 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-manrope font-extrabold mb-4 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] px-4"
             >
               Fast Food & Coffee
             </motion.h1>
@@ -117,7 +117,7 @@ export default function Roccos2Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-              className="text-lg md:text-2xl font-manrope mb-12 max-w-2xl mx-auto text-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.5)]"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-manrope mb-8 md:mb-12 max-w-2xl mx-auto text-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.5)] px-4"
             >
               Un café, un momento, un Rocco&apos;s 2.0
             </motion.p>
@@ -127,13 +127,13 @@ export default function Roccos2Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4"
             >
               <Link href="/roccos-2/menu">
                 <motion.button
                   whileHover={{ scale: 1.01, boxShadow: "0 5px 15px rgba(229, 89, 37, 0.4)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="cursor-pointer transition-all bg-[#E55925] text-white font-outfit text-lg px-8 py-3 rounded-lg border-[#c44016] border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center gap-2 shadow-lg"
+                  className="cursor-pointer transition-all bg-[#E55925] text-white font-outfit text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg border-[#c44016] border-b-[3px] sm:border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[4px] sm:hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -145,7 +145,7 @@ export default function Roccos2Home() {
                 <motion.button
                   whileHover={{ scale: 1.03, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="cursor-pointer transition-all bg-white/20 backdrop-blur-md text-white font-outfit text-lg px-8 py-3 rounded-lg border-[#E55925] border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center gap-2 shadow-lg"
+                  className="cursor-pointer transition-all bg-white/20 backdrop-blur-md text-white font-outfit text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg border-[#E55925] border-b-[3px] sm:border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[4px] sm:hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -161,7 +161,7 @@ export default function Roccos2Home() {
             initial={{ opacity: 0, x: -100 }}
             animate={loaded ? { opacity: 0.9, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-            className="absolute bottom-24 left-6 md:left-12 z-0 w-[100px] h-[150px] md:w-[140px] md:h-[180px]"
+            className="absolute bottom-16 sm:bottom-20 left-2 sm:left-4 md:left-8 z-0 w-[80px] h-[120px] sm:w-[100px] sm:h-[150px] md:w-[140px] md:h-[180px] opacity-80 hover:opacity-100 transition-opacity"
           >
             <Image
               src="/images/take_away_logo.webp"
@@ -176,7 +176,7 @@ export default function Roccos2Home() {
             initial={{ opacity: 0, x: 100 }}
             animate={loaded ? { opacity: 0.9, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-            className="absolute bottom-24 right-6 md:right-12 z-0 w-[100px] h-[150px] md:w-[140px] md:h-[180px]"
+            className="absolute bottom-16 sm:bottom-20 right-2 sm:right-4 md:right-8 z-0 w-[80px] h-[120px] sm:w-[100px] sm:h-[150px] md:w-[140px] md:h-[180px] opacity-80 hover:opacity-100 transition-opacity"
           >
             <Image
               src="/images/mitre-39.webp"
@@ -190,8 +190,8 @@ export default function Roccos2Home() {
 
 
         {/* Elemento de transición con gradiente para fundirse suavemente con la siguiente sección */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 z-10">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-full drop-shadow-[0_0_35px_rgba(0,0,0,0.7)]" preserveAspectRatio="none">
+        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-full drop-shadow-[0_0_35px_rgba(0,0,0,0.5)]" preserveAspectRatio="none">
             <defs>
               <linearGradient id="gradientTransition" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stopColor="#0C2232" stopOpacity="0.5" />
