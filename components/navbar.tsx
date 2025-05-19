@@ -4,8 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Menu, X, Sun, Moon } from "lucide-react"
-import { useTheme } from "next-themes"
+import { Menu, X } from "lucide-react"
 
 type NavbarProps = {
   variant: "classic" | "modern"
@@ -35,7 +34,6 @@ const navLinks = {
 export default function Navbar({ variant, currentPath }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const basePath = variant === "classic" ? "/roccos" : "/roccos-2"
 
@@ -50,7 +48,6 @@ export default function Navbar({ variant, currentPath }: NavbarProps) {
   }, [])
 
   const toggleMenu = () => setIsOpen(!isOpen)
-  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark")
 
   const navbarClasses = {
     classic: {
@@ -61,7 +58,7 @@ export default function Navbar({ variant, currentPath }: NavbarProps) {
       mobileMenu: "bg-[#111111] dark:bg-[#0A0A0A] text-[#FAF4E1] backdrop-blur-lg bg-opacity-95",
     },
     modern: {
-      container: `bg-[#0C2232] text-white  ${scrolled ? "shadow-[0_4px_30px_rgba(0,0,0,0.5)]" : ""}`,
+      container: `bg-[#0C2232] text-white ${scrolled ? "shadow-[0_4px_30px_rgba(0,0,0,0.5)]" : ""}`,
       logo: "font-outfit font-bold",
       link: "font-outfit hover:text-[#E55925] dark:hover:text-[#E55925] transition-all duration-300",
       activeLink: "font-outfit text-[#E55925] dark:text-[#E55925] border-b-2 border-[#E55925] dark:border-[#E55925]",

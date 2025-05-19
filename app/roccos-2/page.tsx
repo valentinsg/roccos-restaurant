@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -8,23 +7,32 @@ import { ArrowRight, Clock, MapPin, Phone, Coffee, Heart, ChevronLeft, ChevronRi
 import { getRestaurantById } from "@/data/restaurants"
 import { useProducts } from "@/lib/context/ProductContext"
 
+// Custom media query breakpoints - Define these in your global.css or use them directly in components
+// Usage example: @media (max-width: 640px) { ... } for mobile devices
+/**
+ * Responsive Breakpoints:
+ * - xs: 480px (Extra small devices - small phones)
+ * - sm: 640px (Small devices - large phones)
+ * - md: 768px (Medium devices - tablets)
+ * - lg: 1024px (Large devices - laptops/desktops)
+ * - xl: 1280px (Extra large devices - large desktops)
+ * - 2xl: 1536px (2X large devices - extra large desktops)
+ */
+
 export default function Roccos2Home() {
   const [loaded, setLoaded] = useState(false)
   const [activeImage, setActiveImage] = useState(0)
   const restaurant = getRestaurantById("roccos-2")
   const heroRef = useRef<HTMLDivElement>(null)
   const { products, loading: productsLoading, error: productsError } = useProducts()
-
-
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   })
-
   const y = useTransform(scrollYProgress, [0, 1], [0, 200])
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
-
-  // Frases aleatorias para el café
+  
+  // Coffee quotes for random selection
   const [coffeeQuote, setCoffeeQuote] = useState("")
   const coffeeQuotes = [
     "El café es un abrazo en una taza",
@@ -36,36 +44,41 @@ export default function Roccos2Home() {
     "El café: porque adultar es difícil",
     "Detrás de cada persona exitosa hay una cantidad sustancial de café",
   ]
-
+  
+  // Carousel images - Update with real paths when available
   const carouselImages = [
     "/images/roccos_2_0_front.webp",
     "/images/roccos_2_0_front.webp",
     "/images/roccos_2_0_front.webp",
   ]
-
+  
   const nextImage = () => {
     setActiveImage((prev) => (prev + 1) % carouselImages.length)
   }
-
+  
   const prevImage = () => {
     setActiveImage((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)
   }
-
+  
   useEffect(() => {
     setLoaded(true)
-    // Seleccionar una frase aleatoria
+    // Select a random coffee quote
     const randomIndex = Math.floor(Math.random() * coffeeQuotes.length)
     setCoffeeQuote(coffeeQuotes[randomIndex])
   }, [])
-
+  
   return (
     <div className="bg-roccos-secondary min-h-screen">
-      {/* Hero Section - Starbucks Style */}
-      <section ref={heroRef} className="relative min-h-screen md:h-[90vh] justify-center overflow-hidden">
-        {/* Background con textura mejorada */}
+      {/* Hero Section - Responsive improvements */}
+      <section 
+        ref={heroRef} 
+        className="relative min-h-[75vh] md:h-[90vh] justify-center overflow-hidden"
+      >
+        <div className="h-[70vh] md:h-[85vh] ">
+        {/* Background with improved texture */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[#0C2232]">
-            {/* Textura mejorada con overlay y blend mode */}
+            {/* Enhanced texture with overlay and blend mode */}
             <div
               className="absolute inset-0 opacity-80 bg-cover bg-center"
               style={{
@@ -74,24 +87,24 @@ export default function Roccos2Home() {
                 filter: "contrast(1.1) brightness(0.9)"
               }}
             ></div>
-            {/* Overlay con gradiente para mejorar profundidad */}
+            {/* Gradient overlay for improved depth */}
             <div
               className="absolute inset-0 bg-gradient-to-b from-roccos-blue-dark/30 to-roccos-blue-dark/10 mix-blend-overlay"
             ></div>
-            {/* Sutil viñeta para dar más profundidad */}
+            {/* Subtle vignette for more depth */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/30 opacity-50"></div>
           </div>
         </div>
-
-        {/* Content */}
+        
+        {/* Content - Improved responsive layout */}
         <div className="relative z-10 h-full flex flex-col items-center justify-center px-4">
           <div className="max-w-5xl mx-auto text-center">
-            {/* Logo principal mejorado */}
+            {/* Improved responsive logo */}
             <motion.div
               initial={{ opacity: 0, y: -30 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-6 md:mb-8 bg-[#151515] w-48 h-48 md:w-72 md:h-72 relative mx-auto drop-shadow-[0_0_20px_rgba(0,0,0,0.6)] rounded-full border-2 border-white/90 shadow-[0_0_15px_rgba(0,0,0,0.7)]"
+              className="mb-4 xs:mb-6 md:mb-8 bg-[#151515] w-32 h-32 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 relative mx-auto drop-shadow-[0_0_20px_rgba(0,0,0,0.6)] rounded-full border-2 border-white/90 shadow-[0_0_15px_rgba(0,0,0,0.7)]"
             >
               <Image
                 src="/images/roccos-2.0-logo.webp"
@@ -101,53 +114,53 @@ export default function Roccos2Home() {
                 className="object-contain p-1"
               />
             </motion.div>
-
-            {/* Título principal */}
+            
+            {/* Responsive main title */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-manrope font-extrabold mb-4 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] px-4"
+              className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-manrope font-extrabold mb-2 xs:mb-4 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] px-2 xs:px-4"
             >
               Fast Food & Coffee
             </motion.h1>
-
-            {/* Subtítulo */}
+            
+            {/* Responsive subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl font-manrope mb-8 md:mb-12 max-w-2xl mx-auto text-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.5)] px-4"
+              className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-manrope mb-6 xs:mb-8 md:mb-12 max-w-2xl mx-auto text-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.5)] px-2 xs:px-4"
             >
               Un café, un momento, un Rocco&apos;s 2.0
             </motion.p>
-
-            {/* Botones de acción */}
+            
+            {/* Responsive action buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4"
+              className="flex flex-col xs:flex-row gap-3 xs:gap-4 sm:gap-6 justify-center px-4"
             >
-              <Link href="/roccos-2/menu">
+              <Link href="/roccos-2/menu" className="w-full xs:w-auto">
                 <motion.button
                   whileHover={{ scale: 1.01, boxShadow: "0 5px 15px rgba(229, 89, 37, 0.4)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="cursor-pointer transition-all bg-[#E55925] text-white font-outfit text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg border-[#c44016] border-b-[3px] sm:border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[4px] sm:hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
+                  className="cursor-pointer transition-all bg-[#E55925] text-white font-outfit text-sm xs:text-base sm:text-lg px-4 xs:px-6 sm:px-8 py-2 xs:py-2.5 sm:py-3 rounded-lg border-[#c44016] border-b-[3px] sm:border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[4px] sm:hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center justify-center gap-2 shadow-lg w-full"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 xs:h-5 xs:w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                   </svg>
                   Menú
                 </motion.button>
               </Link>
-              <Link href="/roccos-2/ubicacion">
+              <Link href="/roccos-2/ubicacion" className="w-full xs:w-auto">
                 <motion.button
                   whileHover={{ scale: 1.03, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="cursor-pointer transition-all bg-white/20 backdrop-blur-md text-white font-outfit text-base sm:text-lg px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg border-[#E55925] border-b-[3px] sm:border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[4px] sm:hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
+                  className="cursor-pointer transition-all bg-white/20 backdrop-blur-md text-white font-outfit text-sm xs:text-base sm:text-lg px-4 xs:px-6 sm:px-8 py-2 xs:py-2.5 sm:py-3 rounded-lg border-[#E55925] border-b-[3px] sm:border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[4px] sm:hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] flex items-center justify-center gap-2 shadow-lg w-full"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 xs:h-5 xs:w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
                   Ubicación
@@ -155,13 +168,13 @@ export default function Roccos2Home() {
               </Link>
             </motion.div>
           </div>
-
-          {/* Logos laterales redimensionados y reposicionados */}
+          
+          {/* Responsive side logos - Hidden on very small screens, visible on larger ones */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={loaded ? { opacity: 0.9, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-            className="absolute bottom-16 sm:bottom-20 left-2 sm:left-4 md:left-8 z-0 w-[80px] h-[120px] sm:w-[100px] sm:h-[150px] md:w-[140px] md:h-[180px] opacity-80 hover:opacity-100 transition-opacity"
+            className="absolute bottom-16 sm:bottom-20 left-0 xs:left-2 sm:left-4 md:left-8 z-0 w-[60px] h-[90px] xs:w-[80px] xs:h-[120px] sm:w-[100px] sm:h-[150px] md:w-[140px] md:h-[180px] opacity-0 xs:opacity-80 hover:opacity-100 transition-opacity"
           >
             <Image
               src="/images/take_away_logo.webp"
@@ -171,12 +184,11 @@ export default function Roccos2Home() {
               className="w-full h-full object-contain drop-shadow-[0_5px_24px_rgba(0,0,0,0.7)]"
             />
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={loaded ? { opacity: 0.9, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-            className="absolute bottom-16 sm:bottom-20 right-2 sm:right-4 md:right-8 z-0 w-[80px] h-[120px] sm:w-[100px] sm:h-[150px] md:w-[140px] md:h-[180px] opacity-80 hover:opacity-100 transition-opacity"
+            className="absolute bottom-16 sm:bottom-20 right-0 xs:right-2 sm:right-4 md:right-8 z-0 w-[60px] h-[90px] xs:w-[80px] xs:h-[120px] sm:w-[100px] sm:h-[150px] md:w-[140px] md:h-[180px] opacity-0 xs:opacity-80 hover:opacity-100 transition-opacity"
           >
             <Image
               src="/images/mitre-39.webp"
@@ -187,10 +199,9 @@ export default function Roccos2Home() {
             />
           </motion.div>
         </div>
-
-
-        {/* Elemento de transición con gradiente para fundirse suavemente con la siguiente sección */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 z-10">
+        
+        {/* Smoother gradient transition to next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 xs:h-20 sm:h-24 md:h-32 z-10">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-full drop-shadow-[0_0_35px_rgba(0,0,0,0.5)]" preserveAspectRatio="none">
             <defs>
               <linearGradient id="gradientTransition" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -204,20 +215,21 @@ export default function Roccos2Home() {
             ></path>
           </svg>
         </div>
+        </div>
       </section>
-
-      {/* Productos Destacados Section con transición mejorada */}
-      <section id="productos-destacados" className="py-24 px-4 bg-[#0C2232] relative">
-        {/* Sombra superior para mejorar la fusión con la sección anterior */}
+      
+      {/* Featured Products Section - Improved responsive grid */}
+      <section id="productos-destacados" className="py-16 xs:py-20 md:py-24 px-4 bg-[#0C2232] relative">
+        {/* Top shadow for improved transition from previous section */}
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0C2232] to-transparent z-0"></div>
-
+        
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-manrope text-center font-extrabold text-white mb-2"
+            className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-manrope text-center font-extrabold text-white mb-2"
           >
             Nuestros Destacados
           </motion.h2>
@@ -226,26 +238,26 @@ export default function Roccos2Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white text-xl font-manrope italic text-center"
+            className="text-white text-lg xs:text-xl font-manrope italic text-center"
           >
             Lo más popular de nuestro menú.
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1 }}
-            className="w-24 h-1 bg-[#E55925] mx-auto mt-6 mb-10 rounded-full"
+            className="w-16 xs:w-24 h-1 bg-[#E55925] mx-auto mt-4 xs:mt-6 mb-8 xs:mb-10 rounded-full"
           ></motion.div>
-
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+          
+          {/* Responsive grid - 1 column on mobile, 2 on tablets, 3 on desktop */}
+          <div className="mt-10 xs:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 xs:gap-10 md:gap-12 max-w-7xl mx-auto">
             {productsLoading ? (
-              <div className="h-full flex items-center justify-center">
+              <div className="h-full flex items-center justify-center col-span-1 sm:col-span-2 lg:col-span-3">
                 <div className="animate-spin rounded-full border-b-2 border-white h-5 w-5"></div>
               </div>
             ) : productsError ? (
-              <div className="text-center text-2xl text-white font-manrope">
+              <div className="text-center text-xl xs:text-2xl text-white font-manrope col-span-1 sm:col-span-2 lg:col-span-3">
                 <p>Error cargando productos</p>
                 <button
                   className="mt-4 px-4 py-2 bg-[#E55925] rounded-full text-white font-manrope"
@@ -266,25 +278,25 @@ export default function Roccos2Home() {
                     transition={{ duration: 0.5, delay: idx * 0.15 }}
                     className="text-center group"
                   >
-                    <div className="relative h-64 w-full flex justify-center items-center">
+                    <div className="relative h-48 xs:h-56 sm:h-64 w-full flex justify-center items-center">
                       <motion.img
                         src={product.image}
                         alt={product.name}
-                        className="h-64 object-contain drop-shadow-xl transition-all duration-300"
+                        className="h-48 xs:h-56 sm:h-64 object-contain drop-shadow-xl transition-all duration-300"
                         whileHover={{
                           scale: 1.08,
                           filter: "drop-shadow(0px 3px 20px rgba(230,193,99,0.8))"
                         }}
                       />
                     </div>
-
-                    <h3 className="mt-4 text-2xl font-extrabold font-manrope text-[#E55925]">
+                    <h3 className="mt-4 text-xl xs:text-2xl font-extrabold font-manrope text-[#E55925] px-2">
                       {product.name}
                     </h3>
-                    <p className="text-md text-white font-manrope mt-2 mb-3 px-2">{product.description}</p>
-
+                    <p className="text-sm xs:text-md text-white font-manrope mt-2 mb-3 px-2 max-w-xs mx-auto">
+                      {product.description}
+                    </p>
                     <motion.div
-                      className="text-3xl text-white font-extrabold font-manrope"
+                      className="text-2xl xs:text-3xl text-white font-extrabold font-manrope"
                       initial={{ scale: 1 }}
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
@@ -296,6 +308,7 @@ export default function Roccos2Home() {
             )}
           </div>
         </div>
+        
       </section>
 
       {/* Historia y Branding */}
