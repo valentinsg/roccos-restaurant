@@ -24,6 +24,7 @@ const navLinks = {
   modern: [
     { name: "Inicio", path: "" },
     { name: "Menú", path: "menu" },
+    { name: "Pedido", path: "pedido" },
     { name: "Ubicación", path: "ubicacion" },
     { name: "Nosotros", path: "nosotros" },
     { name: "FAQ", path: "faq" },

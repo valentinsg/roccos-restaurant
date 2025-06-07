@@ -21,7 +21,7 @@ type FormData = {
 }
 
 export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
-  const { cart, removeFromCart, updateQuantity, clearCart, totalItems, totalPrice } = useCart()
+  const { cart, removeFromCart, updateQuantity, totalPrice } = useCart()
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
@@ -45,19 +45,21 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
   const formStyles = {
     classic: {
       container: "bg-white w-full border border-gray-200 rounded-lg shadow-md",
-      title: "font-outfit text-2xl text-[#7B2D26]",
+      title: "font-outfit text-2xl text-[#A82531]",
       label: "font-outfit text-gray-700",
-      input: "border-gray-300 focus:border-[#7B2D26] border-1 focus:ring-[#7B2D26] font-outfit",
-      button: "bg-[#7B2D26] text-[#FAF4E1] hover:bg-[#5a201c] font-outfit",
-      radio: "text-[#7B2D26] focus:ring-[#7B2D26] ",
+      input: "border-gray-300 focus:border-[#A82531] text-gray-900 border-2 focus:ring-[#A82531] font-outfit placeholder-gray-400",
+      filledInput: "text-gray-900",
+      button: "bg-[#A82531] text-[#FAF4E1] hover:bg-[#5a201c] font-outfit",
+      radio: "text-[#A82531] focus:ring-[#A82531] ",
     },
     modern: {
       container: "bg-white rounded-xl shadow-sm",
       title: "font-outfit text-2xl font-bold text-gray-800",
       label: "font-outfit text-gray-700",
-      input: "border-gray-200 focus:border-yellow-400 focus:ring-yellow-400 font-outfit",
-      button: "bg-yellow-400 text-gray-800 hover:bg-yellow-500 font-outfit",
-      radio: "text-yellow-400 focus:ring-yellow-400",
+      input: "border-2 border-[#E55925] text-gray-900 focus:border-[#E55925] focus:ring-[#E55925] font-outfit placeholder-gray-400",
+      filledInput: "text-gray-900",
+      button: "bg-[#E55925] text-[#FAF4E1] hover:bg-[#5a201c] font-outfit",
+      radio: "text-[#E55925] focus:ring-[#E55925] ",
     },
   }
 
@@ -143,7 +145,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             value={formData.name}
             onChange={handleChange}
             required
-            className={`w-full rounded-md font-outfit text-[#A82531] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+            className={`w-full rounded-md font-outfit ${styles.input} ${formData.name ? styles.filledInput : ''} bg-white p-2`}
             placeholder="Tu nombre"
           />
         </div>
@@ -159,7 +161,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             value={formData.phone}
             onChange={handleChange}
             required
-            className={`w-full rounded-md font-outfit text-[#A82531] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+            className={`w-full rounded-md font-outfit ${styles.input} ${formData.phone ? styles.filledInput : ''} bg-white p-2`}
             placeholder="Tu número de teléfono"
           />
         </div>
@@ -190,14 +192,14 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
               value={formData.address}
               onChange={handleChange}
               required={!formData.pickup}
-              className={`w-full rounded-md font-outfit text-[#A82531] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+              className={`w-full rounded-md font-outfit ${styles.input} ${formData.address ? styles.filledInput : ''} bg-white p-2`}
               placeholder="Tu dirección completa"
             />
           </div>
         )}
 
         <div>
-          <label htmlFor="paymentMethod" className={`${styles.label} block mb-2`}>
+          <label htmlFor="paymentMethod" className={`${styles.label}  block mb-2`}>
             Método de pago
           </label>
           <select
@@ -206,7 +208,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             value={formData.paymentMethod}
             onChange={handleChange}
             required
-            className={`w-full rounded-md font-outfit text-[#111111] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+            className={`w-full rounded-md font-outfit ${styles.input} ${formData.paymentMethod ? styles.filledInput : 'text-gray-400'} bg-white p-2`}
           >
             <option value="efectivo">Efectivo</option>
             <option value="transferencia">Transferencia</option>
@@ -224,7 +226,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
             value={formData.notes}
             onChange={handleChange}
             rows={3}
-            className={`w-full rounded-md font-outfit text-[#A82531] border-2 border-[#A82531] focus:border-[#A82531] focus:ring-[#A82531] bg-white p-2`}
+            className={`w-full rounded-md font-outfit ${styles.input} ${formData.notes ? styles.filledInput : ''} bg-white p-2`}
             placeholder="Instrucciones especiales, alergias, etc."
           />
         </div>
@@ -237,7 +239,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
 
         {/* Resumen del carrito */}
         <div className="bg-gray-50 p-4 rounded-lg mb-6 sticky top-0 z-10">
-          <h3 className="font-outfit text-lg text-[#A82531] font-semibold mb-4">Resumen del Pedido</h3>
+          <h3 className={`font-outfit text-lg ${styles.label} font-semibold mb-4`}>Resumen del Pedido</h3>
           <div className="space-y-2">
             {cart.map((item, index) => (
               <div key={index} className="flex justify-between items-center">
@@ -256,7 +258,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
                     >
                       -
                     </button>
-                    <span className="font-outfit text-gray-700 min-w-[80px]">
+                    <span className={`font-outfit text-gray-700 min-w-[80px] ${styles.label}`}>
                       {item.quantity}x {item.name}
                     </span>
                     <button
@@ -268,28 +270,28 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
                     </button>
                   </div>
                 </div>
-                <span className="font-outfit text-[#A82531] font-semibold">
+                <span className={`font-outfit text-[#A82531] font-semibold ${styles.label}`}>
                   ${item.price.toFixed(2)}
                 </span>
               </div>
             ))}
             <div className="border-t border-gray-200 my-2"></div>
             <div className="flex justify-between items-center">
-              <span className="font-outfit text-gray-700">Subtotal:</span>
-              <span className="font-outfit text-[#A82531] font-semibold">
+              <span className={`font-outfit text-gray-700 ${styles.label}`}>Subtotal:</span>
+              <span className={`font-outfit text-[#A82531] font-semibold ${styles.label}`}>
                 ${totalPrice.toFixed(2)}
               </span>
             </div>
             {!formData.pickup && (
               <div className="flex justify-between items-center">
-                <span className="font-outfit text-gray-700">Envío:</span>
-                <span className="font-outfit text-[#A82531] font-semibold">$2000.00</span>
+                <span className={`font-outfit text-gray-700 ${styles.label}`}>Envío:</span>
+                <span className={`font-outfit text-[#A82531] font-semibold ${styles.label}`}>$2000.00</span>
               </div>
             )}
             <div className="border-t border-gray-200 my-2"></div>
             <div className="flex justify-between items-center font-semibold">
-              <span className="font-outfit text-gray-700">Total:</span>
-              <span className="font-outfit text-[#A82531] font-bold">
+              <span className={`font-outfit text-gray-700 ${styles.label}`}>Total:</span>
+              <span className={`font-outfit text-[#A82531] font-bold ${styles.label}`}>
                 ${finalPrice.toFixed(2)}
               </span>
             </div>
@@ -301,7 +303,7 @@ export default function WhatsAppForm({ variant }: WhatsAppFormProps) {
           whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={cart.length === 0}
-          className={`font-outfit text-[#FAF4E1] border-[#111111] focus:border-[#111111] focus:ring-[#111111] bg-[#A82531] p-2 rounded-md w-full py-3 rounded-md font-bold flex items-center justify-center ${cart.length === 0 ? "opacity-50 cursor-not-allowed" : ""
+          className={`font-outfit text-[#FAF4E1] border-[#111111] focus:border-[#111111] focus:ring-[#111111] ${styles.button} p-2 rounded-md w-full py-3 rounded-md font-bold flex items-center justify-center ${cart.length === 0 ? "opacity-50 cursor-not-allowed" : ""
             }`}
         >
           <Send className="h-5 w-5 mr-2" />

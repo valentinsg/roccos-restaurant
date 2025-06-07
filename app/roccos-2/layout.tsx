@@ -8,6 +8,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { usePathname } from "next/navigation"
 import Seo from "@/components/Seo"
+import Cart from "@/components/cart"
 
 const restaurantSchema = {
   "@context": "https://schema.org",
@@ -20,7 +21,7 @@ const restaurantSchema = {
     "addressRegion": "Buenos Aires",
     "addressCountry": "AR"
   },
-  "telephone": "+54 2245 65-4321",
+  "telephone": "+54 2245470853",
   "servesCuisine": ["Fast Food", "Café", "Sandwiches"],
   "url": "https://www.roccosdolores.com/roccos-2",
   "image": "/images/roccos-2-logo.webp"
@@ -50,6 +51,7 @@ export default function Roccos2Layout({
         <div className="min-h-screen flex flex-col pt-16">
           <Navbar variant="modern" currentPath={currentPath} />
           <main className="flex-grow">{children}</main>
+          <Cart variant="modern" />
           <Footer variant="modern" />
         </div>
       </NotificationProvider>
